@@ -22,6 +22,25 @@
         const connectedWallet = await tonConnectUI.connectWallet();
         // Do something with connectedWallet if needed
         console.log(connectedWallet);
+        // 获取钱包地址
+        const walletAddress = connectedWallet.account.address;
+        console.log("Wallet address:", walletAddress);
+
+        // 获取钱包余额
+        const getBalance = async (address) => {
+      try {
+        // 这里使用 TonWeb 或者其他可以查询余额的 API
+        const tonweb = new TonWeb(); // 初始化 TonWeb 实例
+    
+        const balance = await tonweb.getBalance(address);
+        console.log(`Wallet balance: ${balance / 1e9} TON`); // 转换为 TON 单位
+      } catch (error) {
+        console.error("Failed to get balance:", error);
+      }
+};
+
+// 调用获取余额函数
+getBalance(walletAddress);
     }
 
     // Call the function
