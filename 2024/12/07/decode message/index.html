@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="There is a interview question on bfe.dev about decode-message. The link is below  https:&#x2F;&#x2F;bigfrontend.dev&#x2F;problem&#x2F;decode-message Your are given a 2-D array of characters. There is a hidden message in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2024/12/07/decode%20message/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="There is a interview question on bfe.dev about decode-message. The link is below  https:&#x2F;&#x2F;bigfrontend.dev&#x2F;problem&#x2F;decode-message Your are given a 2-D array of characters. There is a hidden message in">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-12-07T15:48:04.333Z">
+<meta property="article:modified_time" content="2024-12-07T15:48:10.100Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-decode message" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/07/decode%20message/" class="article-date">
+  <time class="dt-published" datetime="2024-12-07T15:48:04.333Z" itemprop="datePublished">2024-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>There is a interview question on bfe.dev about decode-message. The link is below </p>
+<p><a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/decode-message">https://bigfrontend.dev/problem/decode-message</a></p>
+<p>Your are given a 2-D array of characters. There is a hidden message in it.</p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">I B C A L K A</span><br><span class="line">D R F C A E A</span><br><span class="line">G H O E L A D</span><br></pre></td></tr></table></figure>
+<p>col and row are marked with number which start from 0. The number of col is  0 ~ 6 ,and the number of row is 0~2<br>The way to collect the message is as follows</p>
+<ol>
+<li>start at top left</li>
+<li>move diagonally down right</li>
+<li>when cannot move any more, try to switch to diagonally up right</li>
+<li>when cannot move any more, try switch to diagonally down right, repeat 3</li>
+<li>stop when cannot neither move down right or up right. the character on the path is the message<br>for the input above, IROCLED should be returned<br>notes:<br>if no characters could be collected, return empty string</li>
+</ol>
+<p>now we have a matrix of 3 rows , 7 columns.<br>we’ll start at  coordinates   [0,0] . and next we’ll move to [1,1] ,the rest coordinates will be [2,2]<br>[3,1]  [4,0] [5,1] [6,2] </p>
+<p>so in the function  decode,it recieves  a 2D array</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;string[][]&#125; message</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> */</span><br><span class="line">function decode(message) &#123;</span><br><span class="line">  // your code here</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">message=[</span><br><span class="line">[I, B, C, A, L, K, A],</span><br><span class="line">[D, R, F, C, A, E, A],</span><br><span class="line">[G, H, O, E, L,A, D]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>The value of variable   rows will be the lenght of messsage ,that’s  message.length ,and it is 3 .<br>The  value of  varibable columns will be message[0].length ,and  it’s 7 .<br>if the rows or columns is 0 , the function should return.<br>and we set the default value  of variable  result as ‘’ ;<br>we set row as 0 and  col as 0;<br>we use a while loop  to get every col in columns,codes are blow</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;string[][]&#125; message</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> */</span><br><span class="line">function decode(message) &#123;</span><br><span class="line">  if(message.length === 0)return &#x27;&#x27;;</span><br><span class="line">  if(message[0].length===0) return &#x27;&#x27;;</span><br><span class="line">  let rows = message.length;</span><br><span class="line">  let cols = message[0].length;</span><br><span class="line"></span><br><span class="line">  let result = &#x27;&#x27;;</span><br><span class="line">  let row = 0;</span><br><span class="line">  let col = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>   we use a while loop to get every col in columns<br> so in the loop  col will alway plus 1    ,row will plus the direction which name is directionY ,when row is bigger than 2 ,that is row&gt; rows-1 ,directionY should be -1 ,row have to minus 2<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if(row&gt;rows-1)&#123;</span><br><span class="line">  directonY = -1;</span><br><span class="line">  row -=2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>if row is small than 0 ,we in the top of matrix , In this case directionY should be 1 ,row have to add 2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if(row&lt;0)&#123;</span><br><span class="line">  directonY = 1;</span><br><span class="line">  row +=2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>row also have a  limitation ,as we  doing row-&#x3D;2 ,and row +&#x3D;2; we can’t let row out of the matrix .so row must bigger than -1 ,and &lt; rows.<br>the function is blow ,and it passed the test.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @param &#123;string[][]&#125; message</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> */</span><br><span class="line">function decode(message) &#123;</span><br><span class="line">  if(message.length === 0)return &#x27;&#x27;;</span><br><span class="line">  if(message[0].length===0) return &#x27;&#x27;;</span><br><span class="line">  let rows = message.length;</span><br><span class="line">  let cols = message[0].length;</span><br><span class="line"></span><br><span class="line">  let result = &#x27;&#x27;;</span><br><span class="line">  let row = 0;</span><br><span class="line">  let col = 0;</span><br><span class="line">  let directionY = 1;</span><br><span class="line">  /**</span><br><span class="line">  when col = 3 ,row =  3  </span><br><span class="line">  rows =3  , 3 &gt; 3-1</span><br><span class="line">  */</span><br><span class="line">  while(col &lt; cols &amp;&amp; row &gt;-1 &amp;&amp; row&lt;rows)&#123;</span><br><span class="line">    result += message[row][col]</span><br><span class="line">    col+=1</span><br><span class="line">    row +=directionY</span><br><span class="line">  </span><br><span class="line">  if(row&gt;rows-1)&#123;</span><br><span class="line">    directionY = -1;</span><br><span class="line">    row -= 2</span><br><span class="line">  &#125;else if(row&lt;0)&#123;</span><br><span class="line">     directionY = 1;</span><br><span class="line">    row += 2</span><br><span class="line">  &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/07/decode%20message/" data-id="cm4ecou8v000dz1t06uf9av83" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/12/07/commonUseOfClosure/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/12/07/deepClone/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/07/typeof%20null/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/map%20weakMap/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/null-and-undefined/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/protoType%20and%20%20protoType%20Chain/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/deepCopy/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

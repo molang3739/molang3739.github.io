@@ -1,162 +1,607 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Telegram Mini Apps Vanilla JS Sample App</title>
-    <style>
-        body {
-            --bg-color: var(--tg-theme-bg-color);
-            font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--tg-theme-text-color);
-            margin: 48px 24px;
-            padding: 0;
-            color-scheme: var(--tg-color-scheme);
-        }
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-        a {
-            color: var(--tg-theme-link-color);
-        }
-        #viewport {
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 0;
-            height: var(--tg-viewport-stable-height, 100vh);
-            pointer-events: none;
-            transition: all .2s ease;
-        }
-        #viewport:after {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            border-width: 4px;
-            border-style: solid;
-            border-image: linear-gradient(45deg, rgba(64, 224, 208, .5), rgba(173, 255, 47, .5)) 1;
-        }
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-        #viewport-params-size,
-        #viewport-params-expand {
-            content: attr(text);
-            position: absolute;
-            display: inline-block;
-            background: var(--tg-theme-link-color, rgb(64, 224, 208));
-            right: 4px;
-            left: auto;
-            font-size: 8px;
-            padding: 4px;
-            vertical-align: top;
-        }
-        #viewport-params-size {
-            top: 4px;
-        }
-        #viewport-params-expand {
-            top: 30px;
-        }
-    </style>
-</head>
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 <body>
-    <main>
-        <div align="center">
-            <a href="https://ton.org/"><img width="48" src="./assets/tapps.png" alt="logo of telegram web apps"></a>
-        </div>
-        <h1>Modals</h1>
-        <button onclick="Telegram.WebApp.showAlert('Hello World!');">Launch Alert</button>
-        <button onclick="showPopup();">Launch Popup</button>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
 
-        <h1>Links</h1>
-        <ul>
-            <li>
-                <a href="javascript:Telegram.WebApp.openTelegramLink('https://t.me/trendingapps');">Open link within Telegram</a>
-            </li>
-            <li>
-                <a href="javascript:Telegram.WebApp.openLink('https://ton.org/');">Open link in external browser</a>
-            </li>
-            <li>
-                <a href="javascript:Telegram.WebApp.openLink('https://telegra.ph/api',{try_instant_view:true});">Open link inside Telegram webview</a>
-            </li>
-        </ul>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-typeof null" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/07/typeof%20null/" class="article-date">
+  <time class="dt-published" datetime="2024-12-07T15:48:04.336Z" itemprop="datePublished">2024-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Why-is-the-result-of-‘typeof-null’-an-‘object’"><a href="#Why-is-the-result-of-‘typeof-null’-an-‘object’" class="headerlink" title="Why is the result of ‘typeof null’ an ‘object’?"></a>Why is the result of ‘typeof null’ an ‘object’?</h3><h2 id="Kernel"><a href="#Kernel" class="headerlink" title="Kernel"></a>Kernel</h2><p>The result of ‘typeof null’ being “object” is a legacy issue of the JavaScript language.</p>
+<p>In the original version of JavaScript, a 32-bit value was used to represent a variable, with the first 3 bits representing the type of the value. 000 represents an object, 010 represents a floating point number, 100 represents a string, 110 represents a Boolean value, and other values are all considered pointers.</p>
+<p>In this representation, null was interpreted as an all-zero pointer, that is, it is considered to be an empty object reference, so the result of typeof null is “object”.</p>
+<h2 id="expand"><a href="#expand" class="headerlink" title="expand"></a>expand</h2><p>Although this design is a legacy issue, it has become part of the JavaScript language for historical reasons and cannot be fixed. Therefore, it is recommended to use the strict equality operator (&#x3D;&#x3D;&#x3D;) when determining whether a variable is null.</p>
+<p>Can variables globally declared with ‘let’ be accessed via the window object?</p>
+<p>Variables declared with ‘let’ are not attached to the global ‘window’ object, and therefore cannot be accessed via ‘window.variablename’. This is different from variables declared with ‘var’, which are mounted on the global object and can be accessed via ‘window.variableName’.</p>
+<p>For example, consider the following code:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let foo = &#x27;bar&#x27;;</span><br><span class="line">var baz = &#x27;qux&#x27;;</span><br><span class="line">console.log(window.foo); // undefined</span><br><span class="line">console.log(window.baz); // &#x27;qux&#x27;</span><br></pre></td></tr></table></figure>
 
-        <h1>Buttons</h1>
-        <button onclick="Telegram.WebApp.expand();">Expand Webview</button>
-        <button onclick="toggleMainButton();">Toggle Main Button</button>
-    </main>
-    <div id="viewport"></div>
-    <div id="viewport-params-size"></div>
-    <div id="viewport-params-expand"></div>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-        // Init TWA
-        Telegram.WebApp.ready();
+<p>In this code, the variable ‘foo’ declared with ‘let’ is not accessible through ‘window.foo’, while the variable ‘baz’ declared with ‘var’ is accessible through ‘window.baz’.</p>
 
-        // Event occurs whenever theme settings are changed in the user's Telegram app (including switching to night mode).
-        Telegram.WebApp.onEvent('themeChanged', function() {
-            document.documentElement.className = Telegram.WebApp.colorScheme;
-        });
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/07/typeof%20null/" data-id="cm4ecou91000lz1t064gy2cmc" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
 
-        // Show main button
-        Telegram.WebApp.MainButton.setParams({
-            text: 'Main Button'
-        });
-        Telegram.WebApp.MainButton.onClick(function () {
-            Telegram.WebApp.showAlert('Main Button was clicked')
-        });	
-        Telegram.WebApp.MainButton.show();
 
-        // Function to call showPopup API
-        function showPopup() {
-            Telegram.WebApp.showPopup({
-                title: 'Title',
-                message: 'Some message',
-                buttons: [
-                    {id: 'link', type: 'default', text: 'Open ton.org'},
-                    {type: 'cancel'},
-                ]
-            }, function(btn) {
-                if (btn === 'link') {
-                    Telegram.WebApp.openLink('https://ton.org/');
-                }
-            });
-        };
 
-        // Function to toggle main TWA button
-        function toggleMainButton() {
-            if (Telegram.WebApp.MainButton.isVisible) {
-                Telegram.WebApp.MainButton.hide();
-            } else {
-                Telegram.WebApp.MainButton.show();
-            }
-        };
+  
+    <article id="post-map weakMap" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/07/map%20weakMap/" class="article-date">
+  <time class="dt-published" datetime="2024-12-07T15:48:04.335Z" itemprop="datePublished">2024-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Differences-between-map-and-weakMap"><a href="#Differences-between-map-and-weakMap" class="headerlink" title="Differences between map and weakMap"></a>Differences between map and weakMap</h1><h2 id="（1）Map"><a href="#（1）Map" class="headerlink" title="（1）Map"></a>（1）Map</h2><p>map is essentially a set of key-value pairs, but the key in a common Object can only be a string. The Map data structure provided by ES6 is similar to that of an object, but its keys do not limit the range. It can be of any type and is a more complete Hash structure. If the Map key is an original data type, it is considered the same key as long as the two keys are strictly the same. </p>
+<p>In fact, Map is an array, and each of its data is also an array, with the following format:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const map = [</span><br><span class="line">     [&quot;name&quot;,&quot;John&quot;],</span><br><span class="line">     [&quot;age&quot;,18],</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 
-        function setViewportData() {
-            var sizeEl = document.getElementById('viewport-params-size');
-            sizeEl.innerText = 'width: ' + window.innerWidth + ' x ' + 
-                'height: ' + Telegram.WebApp.viewportStableHeight;
+<p>The Map data structure has the following operation methods:</p>
+<p>● size： map.size<br>    map. size returns the total number of members of the Map structure. </p>
+<p>● set(key,value)：<br>  set the key value corresponding to the key name and key, and then return the entire Map structure. If the key already has a value, the key value is updated. Otherwise, the key is generated. (Because the current Map object is returned, it can be called in chain) </p>
+<p>● get(key)：<br>    This method reads the key value corresponding to the key. If the key cannot be found, the undefined is returned. </p>
+<p>● has(key)：<br>    This method returns a boolean value indicating whether a key is in the current Map object.<br>● delete(key)：</p>
+<p> This method deletes a key and returns true. If the key fails to be deleted, false is returned.</p>
+<p>● clear()：<br>    map.clear() clears all members. No return value is returned. </p>
+<p>The Map structure provides three traversal functions and a traversal method.</p>
+<p>● keys()： Returns an iterator for keys.</p>
+<p>● values()： Returns an iterator for values.</p>
+<p>● entries()：  Returns an iterator for all members.</p>
+<p>● forEach()：。 Traverses all members of the Map.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const map = new Map([</span><br><span class="line">     [&quot;foo&quot;,1],</span><br><span class="line">     [&quot;bar&quot;,2],</span><br><span class="line">])</span><br><span class="line">for(let key of map.keys())&#123;</span><br><span class="line">    console.log(key);  // foo bar</span><br><span class="line">&#125;</span><br><span class="line">for(let value of map.values())&#123;</span><br><span class="line">     console.log(value); // 1 2</span><br><span class="line">&#125;</span><br><span class="line">for(let items of map.entries())&#123;</span><br><span class="line">    console.log(items);  // [&quot;foo&quot;,1]  [&quot;bar&quot;,2]</span><br><span class="line">&#125;</span><br><span class="line">map.forEach( (value,key,map) =&gt; &#123;</span><br><span class="line">     console.log(key,value); // foo 1    bar 2</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="（2）WeakMap"><a href="#（2）WeakMap" class="headerlink" title="（2）WeakMap"></a>（2）WeakMap</h2><p>WeakMap object is also a set of key-value correct sets, where keys are weakly referenced. The key must be an object. , the original data type cannot be used as a key value, but the value can be arbitrary. </p>
+<p>This object also has the following methods: </p>
+<p>● set(key,value)：	<br>    set the key value corresponding to the key name and key, and then return the entire Map structure. If the key already has a value, the key value is updated. Otherwise, the key is generated. (Because the current Map object is returned, it can be called in chain)</p>
+<p>● get(key)：<br>    This method reads the key value corresponding to the key. If the key cannot be found, the undefined is returned. </p>
+<p>● has(key)：<br>    This method returns a boolean value indicating whether a key is in the current Map object. </p>
+<p>● delete(key)：<br>    This method deletes a key and returns true. If the key fails to be deleted, false is returned. </p>
+<p>The clear() method has been deprecated, so you can clear it by creating an empty WeakMap and replacing the original object.</p>
+<p>The purpose of WeakMap is to store some data on an object sometimes, but this will form a reference to the object. Once the two objects are no longer needed, you must manually delete the reference. Otherwise, the garbage collection mechanism will not release the memory occupied by the objects.</p>
+<p>And WeakMap the objects referenced by key names are all weak references. , that is, the garbage collection mechanism does not take this reference into account. Therefore, as long as other references of the referenced object are cleared, the garbage collection mechanism releases the memory occupied by the object. That is to say, once it is no longer needed, WeakMap the key name object and the corresponding key-value pair disappear automatically. You do not need to delete the reference manually. .</p>
+<p>Summary: </p>
+<p>●<br>    Map data structure. It is similar to an object and is also a set of correct key values. However, the range of “keys” is not limited to strings. Various types of values (including objects) can be treated as keys.</p>
+<p>●<br>    The WeakMap structure is similar to the Map structure and is also used to generate the correct set of key values. However, WeakMap only accept objects as key names (except null) and do not accept other types of values as key names. The objects pointed to by the key name of the WeakMap are not included in the garbage collection mechanism.</p>
 
-            var expandEl = document.querySelector('#viewport-params-expand');
-            expandEl.innerText = 'Is Expanded: ' + (Telegram.WebApp.isExpanded ? 'true' : 'false');
-        }
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/07/map%20weakMap/" data-id="cm4ecou8z000iz1t0apyid86l" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
 
-        Telegram.WebApp.setHeaderColor('secondary_bg_color');
 
-        setViewportData();
-        Telegram.WebApp.onEvent('viewportChanged', setViewportData);
 
-        Telegram.WebApp.onEvent('themeChanged', function() {
-            document.body.setAttribute('style', '--bg-color:' + Telegram.WebApp.backgroundColor);
-        });
+  
+    <article id="post-null-and-undefined" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/07/null-and-undefined/" class="article-date">
+  <time class="dt-published" datetime="2024-12-07T15:48:04.335Z" itemprop="datePublished">2024-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="The-difference-between-null-and-undefined"><a href="#The-difference-between-null-and-undefined" class="headerlink" title="The difference between null and undefined"></a>The difference between null and undefined</h1><p>First of all, Undefined and Null are both basic data types. Each of these two basic data types has only one value, which is undefined and null.</p>
+<p>Undefined means undefined, while null means empty object. When a general variable is declared but not yet defined, it will return undefined. null is mainly used to assign values to variables that may return objects as initialization.</p>
+<p>Undefined is not a reserved word in JavaScript, which means that it can be used as a variable name, but this approach is very dangerous as it can affect the judgment of the undefined value. We can obtain secure undefined values through some methods, such as void 0.</p>
+<p>When using typeof to judge these two types, Null typing will return “object”, which is a historical problem. Returns true when using a double equal sign to compare two types of values, and returns false when using a triple equal sign.</p>
 
-    </script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/07/null-and-undefined/" data-id="cm4ecou91000jz1t02mfs2n1r" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
 
-    <!-- Eruda is console for mobile browsers -->
-    <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
-    <script>eruda.init();</script>
+
+
+  
+    <article id="post-protoType and  protoType Chain" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/07/protoType%20and%20%20protoType%20Chain/" class="article-date">
+  <time class="dt-published" datetime="2024-12-07T15:48:04.335Z" itemprop="datePublished">2024-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>there is simple question how can you check if a variable is an Array。<br>the answer is easy </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr instanceof Array</span><br></pre></td></tr></table></figure>
+<p>if result is true  ,arr is Array .otherwise  arr isn’t;</p>
+<p>so there is another question：  what’s  principle behind instanceof in Javascript</p>
+<p>let me explain</p>
+<p>there’re two classes. People and Student . Student implements People</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class People&#123;</span><br><span class="line">    constructor(name)&#123;</span><br><span class="line">        this.name = name</span><br><span class="line">    &#125;</span><br><span class="line">    eat()&#123;</span><br><span class="line">        console.log(`$&#123;this.name&#125; eat something`)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Student extends People&#123;</span><br><span class="line">    constructor(name,number)&#123;</span><br><span class="line">        super(name); // the parent class handles this property</span><br><span class="line">        this.number =number;</span><br><span class="line">    &#125;</span><br><span class="line">    sayHi()&#123;</span><br><span class="line">        console.log(`name $&#123;this.name&#125;, no $&#123;this.number&#125;`)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const huck = new Student(&#x27;huck&#x27;,100);</span><br><span class="line">console.log(huck.name)</span><br><span class="line">console.log(huck.number)</span><br><span class="line">huck.sayHi();</span><br></pre></td></tr></table></figure>
+
+<p>“huck” is an instance of Student;</p>
+<p>Here are the 3 basic rules in Prototype<br>“Every class in Javascript has a explicit prototype property”<br>“Every instance in Javascript has implicit prototype, <strong>proto</strong>“<br>“An instance’s <strong>proto</strong> prototype points to corresponding class”</p>
+<p>take the value “huck” for example </p>
+<p>huck has a <code>__proto__</code>  points to Student’s prototype.</p>
+<p><img src="/./images/prototype/p1@2x.png" alt="protytype"></p>
+<p>and Student‘s  <code>__proto__</code>  points to People’s prototype.</p>
+<p><img src="/./images/prototype/p2@2x.png" alt="protytype"></p>
+<p>and People‘s  <code>__proto__</code>  points to Object’s prototype.</p>
+<p>Object‘s  <code>__proto__</code>  points to null</p>
+<p><img src="/./images/prototype/p3@2x.png" alt="protytype"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/07/protoType%20and%20%20protoType%20Chain/" data-id="cm4ecou91000kz1t034j5abv9" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-deepCopy" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/07/deepCopy/" class="article-date">
+  <time class="dt-published" datetime="2024-12-07T15:48:04.334Z" itemprop="datePublished">2024-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="Implement-deep-copy"><a href="#Implement-deep-copy" class="headerlink" title="Implement deep copy"></a>Implement deep copy</h3><p>  ○ Shallow copy: Shallow copy refers to copying the attribute value of one object to another object. If the attribute value is a reference type, then the address of the reference is copied to the object, so the two objects will have a reference of the same reference type. Shallow copying can be implemented using Object.assign() and the spread operator.</p>
+<p>  ○ Deep copy: Compared to shallow copy, if a property value is a reference type, deep copy creates a reference type and copies the corresponding value to it, so the object gets a new reference type instead of a reference of the original type. Deep copying can be  achieved for some objects using two JSON functions. However, due to JSON’s stricter object format compared to JavaScript’s, this method fails if the object contains functions or Symbol types.</p>
+<h4 id="（1）JSON-stringify"><a href="#（1）JSON-stringify" class="headerlink" title="（1）JSON.stringify()"></a>（1）JSON.stringify()</h4><p>  ○ JSON.parse(JSON.stringify(obj)) is one of the most commonly used deep copy methods. Its principle is to use JSON.stringify to serialize the JavaScript object into a JSON string, and then use JSON.parse() to deserialize (restore) the JavaScript object.</p>
+<p>  ○ This method can be a simple implementation of deep copy, but there is a problem -  functions, undefined, and Symbol values in the copied object will be lost after processing with JSON.stringify().</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">let obj1 = &#123;  a: 0,</span><br><span class="line">              b: &#123;</span><br><span class="line">                 c: 0</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;;</span><br><span class="line">let obj2 = JSON.parse(JSON.stringify(obj1));</span><br><span class="line">obj1.a = 1;</span><br><span class="line">obj1.b.c = 1;</span><br><span class="line">console.log(obj1); // &#123;a: 1, b: &#123;c: 1&#125;&#125;</span><br><span class="line">console.log(obj2); // &#123;a: 0, b: &#123;c: 0&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="2-Library-lodash’s-cloneDeep-method"><a href="#2-Library-lodash’s-cloneDeep-method" class="headerlink" title="(2) Library lodash’s.cloneDeep method"></a>(2) Library lodash’s.cloneDeep method</h4><p>The library also provides _.cloneDeep() for Deep Copying.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var _ = require(&#x27;lodash&#x27;);</span><br><span class="line">var obj1 = &#123;</span><br><span class="line">    a: 1,</span><br><span class="line">    b: &#123; f: &#123; g: 1 &#125; &#125;,</span><br><span class="line">    c: [1, 2, 3]</span><br><span class="line">&#125;;</span><br><span class="line">var obj2 = _.cloneDeep(obj1);</span><br><span class="line">console.log(obj1.b.f === obj2.b.f);// false</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-Handwritten-Deep-Copy-Function-Implementation"><a href="#3-Handwritten-Deep-Copy-Function-Implementation" class="headerlink" title="(3) Handwritten Deep Copy Function Implementation"></a>(3) Handwritten Deep Copy Function Implementation</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function deepCopy(object) &#123;</span><br><span class="line">  if (!object || typeof object !== &quot;object&quot;) return;</span><br><span class="line"></span><br><span class="line">  let newObject = Array.isArray(object) ? [] : &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  for (let key in object) &#123;</span><br><span class="line">    if (object.hasOwnProperty(key)) &#123;</span><br><span class="line">      newObject[key] =</span><br><span class="line">        typeof object[key] === &quot;object&quot; ? deepCopy(object[key]) : object[key];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  return newObject;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/07/deepCopy/" data-id="cm4ecou8x000fz1t0c90n734b" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-execution context" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/07/execution%20context/" class="article-date">
+  <time class="dt-published" datetime="2024-12-07T15:48:04.334Z" itemprop="datePublished">2024-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Understanding-the-execution-context"><a href="#Understanding-the-execution-context" class="headerlink" title="Understanding the execution context"></a>Understanding the execution context</h2><ol>
+<li>Execution context type</li>
+</ol>
+<p>（1）global execution context</p>
+<p>Anything that is not inside a function is a global execution context. It first creates a global window object and sets the value of this object to be equal to this global object. A program has only one global execution context. </p>
+<p>（2）function execution context</p>
+<p>When a function is called, a new execution context is created for the function. The context of the function can be as many as possible. </p>
+<p>（3）* * eval * * function execution context  </p>
+<p>the code executed in the eval function has its own execution context. However, the eval function is not often used and is not introduced. </p>
+<h2 id="2-Execute-the-context-stack"><a href="#2-Execute-the-context-stack" class="headerlink" title="2. Execute the context stack"></a>2. Execute the context stack</h2><p>● the JavaScript engine uses the execution context stack to manage the execution context.</p>
+<p>● when the JavaScript executes the code, it first encounters the global code, creates a global execution context and presses it into the execution stack. Whenever a function call is encountered, it creates a new execution context for the function and presses it into the top of the stack. The engine executes the function at the top of the execution context stack. After the function execution is completed, the execution context pops up from the stack and continues to execute the next context. After all the code is executed, the global execution context pops up from the stack.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let a = &#x27;Hello World!&#x27;;</span><br><span class="line">function first() &#123;</span><br><span class="line">  console.log(&#x27;Inside first function&#x27;);</span><br><span class="line">  second();</span><br><span class="line">  console.log(&#x27;Again inside first function&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">function second() &#123;</span><br><span class="line">  console.log(&#x27;Inside second function&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">first();</span><br><span class="line">//order of excution</span><br><span class="line">// second()  first()</span><br></pre></td></tr></table></figure>
+<h2 id="3-Create-an-execution-context"><a href="#3-Create-an-execution-context" class="headerlink" title="3. Create an execution context"></a>3. Create an execution context</h2><p>there are two phases to create an execution context: creation phase and execution phase </p>
+<h3 id="1）creation-phase"><a href="#1）creation-phase" class="headerlink" title="1）creation phase"></a>1）creation phase</h3><p> （1）this binding<br>●<br>in the context of global execution, this point to a global object (window object) </p>
+<p>●<br>in the context of function execution, this point depends on how the function is called. If it is called by a reference object, this is set to that object, otherwise the value of this is set to global object or undefined </p>
+<p>###（2）create lexical environment components </p>
+<p>●<br>lexical environment is a kind identifier – Variable mapping the identifier refers to the variable&#x2F;function name, and the variable is a reference to the actual object or raw data.</p>
+<p>●<br>the lexical environment has two internal components: bold Style : environment recorder: used to store the actual location of variable function declarations references to external environments : you can access the parent scope. </p>
+<p>###（3）Create a variable environment component</p>
+<p>●<br>the variable environment is also a lexical environment. Its environment recorder holds the binding relationship created in the execution context of the variable declaration statement. </p>
+<h3 id="2）execution-phase"><a href="#2）execution-phase" class="headerlink" title="2）execution phase"></a>2）execution phase</h3><p>At this stage, variables are allocated and the code is executed. </p>
+<p>In short, the execution context refers:</p>
+<p>Before executing a little JS code, you need to parse the code. When parsing, a global execution context is created. First, the variables and function declarations to be executed in the code are taken out. The variables are assigned to undefined first, and the functions are declared to be available. After this step is completed, the formal execution procedure is started. </p>
+<p>Before a function is executed, a function execution context is also created, which is similar to the global execution context. However, this, arguments, and function parameters are added to the function execution context. </p>
+<p>●<br>global Context: variable definition, function declaration </p>
+<p>●<br>function context: variable definition, function declaration, this , arguments</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/07/execution%20context/" data-id="cm4ecou8z000gz1t052by9q0h" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-asynchronousLoading" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/07/asynchronousLoading/" class="article-date">
+  <time class="dt-published" datetime="2024-12-07T15:48:04.333Z" itemprop="datePublished">2024-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="What-are-the-differences-in-asynchronous-loading-of-JS-scripts"><a href="#What-are-the-differences-in-asynchronous-loading-of-JS-scripts" class="headerlink" title="What are the differences in asynchronous loading of JS scripts?"></a>What are the differences in asynchronous loading of JS scripts?</h3><h2 id="In-Web-applications-the-asynchronous-loading-of-JavaScript-scripts-can-be-achieved-in-the-following-ways"><a href="#In-Web-applications-the-asynchronous-loading-of-JavaScript-scripts-can-be-achieved-in-the-following-ways" class="headerlink" title="In Web applications, the asynchronous loading of JavaScript scripts can be achieved in the following ways:"></a>In Web applications, the asynchronous loading of JavaScript scripts can be achieved in the following ways:</h2><p>  a. Dynamically create a <script> tag and set its src attribute to the URL of the script to be loaded. You can use the onload or onreadystatechange event to check if the script has finished loading.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const script = document.createElement(&#x27;script&#x27;);</span><br><span class="line">script.src = &#x27;path/to/script.js&#x27;;</span><br><span class="line">script.onload = function() &#123;</span><br><span class="line"> // </span><br><span class="line">&#125;;</span><br><span class="line">document.body.appendChild(script);</span><br></pre></td></tr></table></figure>
+
+<p>  b. Use the XMLHttpRequest object or the Fetch API to send an asynchronous request. After a successful request, parse the response text into JavaScript code, and then use the eval() function or Function() constructor to execute the script.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const xhr = new XMLHttpRequest();</span><br><span class="line">xhr.open(&#x27;GET&#x27;, &#x27;path/to/script.js&#x27;);</span><br><span class="line">xhr.onload = function() &#123;</span><br><span class="line"> const script = document.createElement(&#x27;script&#x27;);</span><br><span class="line"> script.textContent = xhr.responseText;</span><br><span class="line"> document.head.appendChild(script);</span><br><span class="line">&#125;;</span><br><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
+
+<h3 id="These-two-methods-can-be-used-to-implement-the-asynchronous-loading-of-JavaScript-scripts-Compared-to-synchronous-loading-asynchronous-loading-has-the-following-differences"><a href="#These-two-methods-can-be-used-to-implement-the-asynchronous-loading-of-JavaScript-scripts-Compared-to-synchronous-loading-asynchronous-loading-has-the-following-differences" class="headerlink" title="These two methods can be used to implement the asynchronous loading of JavaScript scripts. Compared to synchronous loading, asynchronous loading has the following differences:"></a>These two methods can be used to implement the asynchronous loading of JavaScript scripts. Compared to synchronous loading, asynchronous loading has the following differences:</h3><p>  a. Asynchronous loading can improve the loading speed and response performance of the page, and avoid the situation that the page is stuck due to JavaScript blocking.</p>
+<p>  b. Asynchronous loading avoids the blocking caused by loading scripts and allows other resources of the page to load and render faster.</p>
+<p>  c. Asynchronous loading allows you to flexibly control the loading sequence and the execution time of scripts, and dynamically load and unload scripts based on page requirements, thus improving page maintainability and expansibility.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/07/asynchronousLoading/" data-id="cm4ecou8u000bz1t0cbpw52xu" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-commonUseOfClosure" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/07/commonUseOfClosure/" class="article-date">
+  <time class="dt-published" datetime="2024-12-07T15:48:04.333Z" itemprop="datePublished">2024-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="two-common-use-of-closure"><a href="#two-common-use-of-closure" class="headerlink" title="two common use of closure"></a>two common use of closure</h3><p>there are two common use of closure: pass function as parameter,pass function as return value</p>
+<h2 id="pass-function-as-parameter"><a href="#pass-function-as-parameter" class="headerlink" title="pass function as parameter"></a>pass function as parameter</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function a1()&#123;</span><br><span class="line">    let a = 100;</span><br><span class="line">    return function()&#123;</span><br><span class="line">        console.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">let a = 200;</span><br><span class="line">let b = a1()</span><br><span class="line">b();</span><br><span class="line">// output 100;</span><br></pre></td></tr></table></figure>
+<p>Explanation:<br>In this example, the function a1 defines a local variable a (with a value of 100) and returns an inner function. The inner function forms a closure over a. When b is executed, it remembers the environment where it was defined, so it uses the a from a1, not the outer a &#x3D; 200.</p>
+<h2 id="pass-function-as-return-value"><a href="#pass-function-as-return-value" class="headerlink" title="pass function as return value"></a>pass function as return value</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function fn(cb)&#123;</span><br><span class="line">    let a = 200;</span><br><span class="line">    cb()</span><br><span class="line">&#125;</span><br><span class="line">let a = 100;</span><br><span class="line">function fn2()&#123;</span><br><span class="line">    console.log(a)</span><br><span class="line">&#125;</span><br><span class="line">fn(fn2);</span><br><span class="line">//output 100</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Explanation:<br>Here, the function fn takes a callback function cb as a parameter. When cb is executed inside fn, it still retains its original scope from the outer environment where it was defined. In this case, fn2 is defined in the global scope, so it uses the global variable a &#x3D; 100, not the a declared inside fn.</p>
+<p>Why Both Results Are 100?<br>The key concept of closures is lexical scoping, meaning a function’s variables are resolved based on where the function is defined, not where it is called.</p>
+<p>In the first example, the returned function remembers the variable a from its defining scope in a1 (value is 100).<br>In the second example, the function fn2 was defined in the global scope, so it uses the global variable a &#x3D; 100, even though it’s executed inside fn.<br>Closures ensure that functions “remember” the variables from their defining scope, regardless of where they are called.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/07/commonUseOfClosure/" data-id="cm4ecou8v000cz1t0191u501b" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-decode message" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/07/decode%20message/" class="article-date">
+  <time class="dt-published" datetime="2024-12-07T15:48:04.333Z" itemprop="datePublished">2024-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>There is a interview question on bfe.dev about decode-message. The link is below </p>
+<p><a target="_blank" rel="noopener" href="https://bigfrontend.dev/problem/decode-message">https://bigfrontend.dev/problem/decode-message</a></p>
+<p>Your are given a 2-D array of characters. There is a hidden message in it.</p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">I B C A L K A</span><br><span class="line">D R F C A E A</span><br><span class="line">G H O E L A D</span><br></pre></td></tr></table></figure>
+<p>col and row are marked with number which start from 0. The number of col is  0 ~ 6 ,and the number of row is 0~2<br>The way to collect the message is as follows</p>
+<ol>
+<li>start at top left</li>
+<li>move diagonally down right</li>
+<li>when cannot move any more, try to switch to diagonally up right</li>
+<li>when cannot move any more, try switch to diagonally down right, repeat 3</li>
+<li>stop when cannot neither move down right or up right. the character on the path is the message<br>for the input above, IROCLED should be returned<br>notes:<br>if no characters could be collected, return empty string</li>
+</ol>
+<p>now we have a matrix of 3 rows , 7 columns.<br>we’ll start at  coordinates   [0,0] . and next we’ll move to [1,1] ,the rest coordinates will be [2,2]<br>[3,1]  [4,0] [5,1] [6,2] </p>
+<p>so in the function  decode,it recieves  a 2D array</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;string[][]&#125; message</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> */</span><br><span class="line">function decode(message) &#123;</span><br><span class="line">  // your code here</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">message=[</span><br><span class="line">[I, B, C, A, L, K, A],</span><br><span class="line">[D, R, F, C, A, E, A],</span><br><span class="line">[G, H, O, E, L,A, D]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>The value of variable   rows will be the lenght of messsage ,that’s  message.length ,and it is 3 .<br>The  value of  varibable columns will be message[0].length ,and  it’s 7 .<br>if the rows or columns is 0 , the function should return.<br>and we set the default value  of variable  result as ‘’ ;<br>we set row as 0 and  col as 0;<br>we use a while loop  to get every col in columns,codes are blow</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param &#123;string[][]&#125; message</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> */</span><br><span class="line">function decode(message) &#123;</span><br><span class="line">  if(message.length === 0)return &#x27;&#x27;;</span><br><span class="line">  if(message[0].length===0) return &#x27;&#x27;;</span><br><span class="line">  let rows = message.length;</span><br><span class="line">  let cols = message[0].length;</span><br><span class="line"></span><br><span class="line">  let result = &#x27;&#x27;;</span><br><span class="line">  let row = 0;</span><br><span class="line">  let col = 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>   we use a while loop to get every col in columns<br> so in the loop  col will alway plus 1    ,row will plus the direction which name is directionY ,when row is bigger than 2 ,that is row&gt; rows-1 ,directionY should be -1 ,row have to minus 2<br> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if(row&gt;rows-1)&#123;</span><br><span class="line">  directonY = -1;</span><br><span class="line">  row -=2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>if row is small than 0 ,we in the top of matrix , In this case directionY should be 1 ,row have to add 2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if(row&lt;0)&#123;</span><br><span class="line">  directonY = 1;</span><br><span class="line">  row +=2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>row also have a  limitation ,as we  doing row-&#x3D;2 ,and row +&#x3D;2; we can’t let row out of the matrix .so row must bigger than -1 ,and &lt; rows.<br>the function is blow ,and it passed the test.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @param &#123;string[][]&#125; message</span><br><span class="line"> * @return &#123;string&#125;</span><br><span class="line"> */</span><br><span class="line">function decode(message) &#123;</span><br><span class="line">  if(message.length === 0)return &#x27;&#x27;;</span><br><span class="line">  if(message[0].length===0) return &#x27;&#x27;;</span><br><span class="line">  let rows = message.length;</span><br><span class="line">  let cols = message[0].length;</span><br><span class="line"></span><br><span class="line">  let result = &#x27;&#x27;;</span><br><span class="line">  let row = 0;</span><br><span class="line">  let col = 0;</span><br><span class="line">  let directionY = 1;</span><br><span class="line">  /**</span><br><span class="line">  when col = 3 ,row =  3  </span><br><span class="line">  rows =3  , 3 &gt; 3-1</span><br><span class="line">  */</span><br><span class="line">  while(col &lt; cols &amp;&amp; row &gt;-1 &amp;&amp; row&lt;rows)&#123;</span><br><span class="line">    result += message[row][col]</span><br><span class="line">    col+=1</span><br><span class="line">    row +=directionY</span><br><span class="line">  </span><br><span class="line">  if(row&gt;rows-1)&#123;</span><br><span class="line">    directionY = -1;</span><br><span class="line">    row -= 2</span><br><span class="line">  &#125;else if(row&lt;0)&#123;</span><br><span class="line">     directionY = 1;</span><br><span class="line">    row += 2</span><br><span class="line">  &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/07/decode%20message/" data-id="cm4ecou8v000dz1t06uf9av83" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-deepClone" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/07/deepClone/" class="article-date">
+  <time class="dt-published" datetime="2024-12-07T15:48:04.333Z" itemprop="datePublished">2024-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="Implement-deepClone-manually"><a href="#Implement-deepClone-manually" class="headerlink" title="Implement deepClone manually"></a>Implement deepClone manually</h4><h5 id="Reason"><a href="#Reason" class="headerlink" title="Reason:"></a>Reason:</h5><p>Reference types will share the same address, so when we use &#x3D; operator, if there is modification on the new object, the value on the old object will change too.</p>
+<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><p>Iterate the Object recursively. If there is reference type, we create a new one and copy all the value type to the new reference type.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function deepClone(obj = &#123;&#125;) &#123;</span><br><span class="line">    // null can&#x27;t be treated as object</span><br><span class="line">    if (typeof obj != &quot;object&quot; || obj === null) &#123;</span><br><span class="line">        console.log(obj, &quot;obj&quot;);</span><br><span class="line">        return obj;</span><br><span class="line">    &#125;</span><br><span class="line">    let result;</span><br><span class="line">    // create a new reference type</span><br><span class="line">    if (obj instanceof Array) &#123;</span><br><span class="line">        result = [];</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        result = &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    for (let key in obj) &#123;</span><br><span class="line">        // make sure key is not on prototype</span><br><span class="line">        if (obj.hasOwnProperty(key)) &#123;</span><br><span class="line">            result[key] = deepClone(obj[key]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line">let obj1 = &#123; x: 100, y: 200, z: [1, 2, 3], c: null &#125;;</span><br><span class="line">let obj2 = deepClone(obj1);</span><br><span class="line">console.log(obj2);</span><br><span class="line">obj2.x = 102;</span><br><span class="line">console.log(obj2, obj1);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/07/deepClone/" data-id="cm4ecou8x000ez1t0hk2ucbrw" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/07/typeof%20null/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/map%20weakMap/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/null-and-undefined/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/protoType%20and%20%20protoType%20Chain/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/deepCopy/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
 </body>
 </html>

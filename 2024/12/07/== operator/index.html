@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="What are the rules for type coercion of the &#x3D;&#x3D; operator?For the &#x3D;&#x3D; operator,if the types of the two operands being compared are different, the type conversion is performed. If you">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2024/12/07/==%20operator/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="What are the rules for type coercion of the &#x3D;&#x3D; operator?For the &#x3D;&#x3D; operator,if the types of the two operands being compared are different, the type conversion is performed. If you">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-12-07T15:48:04.328Z">
+<meta property="article:modified_time" content="2024-12-07T15:48:10.095Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-== operator" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/12/07/==%20operator/" class="article-date">
+  <time class="dt-published" datetime="2024-12-07T15:48:04.328Z" itemprop="datePublished">2024-12-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="What-are-the-rules-for-type-coercion-of-the-operator"><a href="#What-are-the-rules-for-type-coercion-of-the-operator" class="headerlink" title="What are the rules for type coercion of the &#x3D;&#x3D; operator?"></a>What are the rules for type coercion of the &#x3D;&#x3D; operator?</h1><p>For the &#x3D;&#x3D; operator,if the types of the two operands being compared are different, the type conversion is performed. If you compare whether x and y are the same, the following judgment process will be performed:</p>
+<ol>
+<li>First, it will determine whether the two types are the same, and compare the size of the two if they are the same;</li>
+</ol>
+<p>2.If the types are not the same, type conversion will be performed;</p>
+<p>3.It will first determine whether it is comparing null and undefined, and if it is, it will return true</p>
+<p>4.Check if the types of both are string and number, if so, the string will be converted to number.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 == &#x27;1&#x27;</span><br><span class="line">      ↓</span><br><span class="line">1 ==  1</span><br></pre></td></tr></table></figure>
+
+<p>5.To determine whether one of the parties is a boolean, if so, it will change the boolean to number and then make a judgment</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x27;1&#x27; == true</span><br><span class="line">        ↓</span><br><span class="line">&#x27;1&#x27; ==  1</span><br><span class="line">        ↓</span><br><span class="line"> 1  ==  1</span><br></pre></td></tr></table></figure>
+<p>6.Determine if one of the elements is an object and the other is a string, number, or symbol. If so, the object will be converted to its primitive type before the comparison.<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x27;1&#x27; == &#123; name: &#x27;js&#x27; &#125;</span><br><span class="line">        ↓</span><br><span class="line">&#x27;1&#x27; == &#x27;[object Object]&#x27;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/12/07/==%20operator/" data-id="cm4ecou7q0000z1t0blw71r59" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/12/07/DataTypes-for-Javascript/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/12/07/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/12/07/typeof%20null/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/map%20weakMap/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/null-and-undefined/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/protoType%20and%20%20protoType%20Chain/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/12/07/deepCopy/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
