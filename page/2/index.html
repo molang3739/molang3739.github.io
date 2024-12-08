@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>Huck&#39;s dev blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Huck&#39;s dev blog">
 <meta property="og:url" content="http://example.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Huck&#39;s dev blog">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="huck@love">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Huck's dev blog" type="application/atom+xml">
   
   
     <link rel="shortcut icon" href="/favicon.png">
@@ -39,7 +39,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Huck&#39;s dev blog</a>
       </h1>
       
     </div>
@@ -69,27 +69,220 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-When to Use === and ==" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-typeof null" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/12/07/When%20to%20Use%20===%20and%20==/" class="article-date">
-  <time class="dt-published" datetime="2024-12-07T15:48:04.332Z" itemprop="datePublished">2024-12-07</time>
+    <a href="/2024/01/21/typeof%20null/" class="article-date">
+  <time class="dt-published" datetime="2024-01-21T02:19:00.000Z" itemprop="datePublished">2024-01-21</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/01/21/typeof%20null/">Why is the result of &#39;typeof null&#39; an &#39;object&#39;?</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="When-to-Use-and"><a href="#When-to-Use-and" class="headerlink" title="When to Use &#x3D;&#x3D;&#x3D; and &#x3D;&#x3D;"></a>When to Use &#x3D;&#x3D;&#x3D; and &#x3D;&#x3D;</h3><h4 id="Use-the-operator-only-when-checking-for-null-or-undefined-In-all-other-cases-use-for-strict-equality"><a href="#Use-the-operator-only-when-checking-for-null-or-undefined-In-all-other-cases-use-for-strict-equality" class="headerlink" title="Use the &#x3D;&#x3D; operator only when checking for null or undefined. In all other cases, use &#x3D;&#x3D;&#x3D; for strict equality."></a>Use the &#x3D;&#x3D; operator only when checking for null or undefined. In all other cases, use &#x3D;&#x3D;&#x3D; for strict equality.</h4><p>For example:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if(obj.a == null)&#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>is equivalent to:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if (obj.a === null || obj.a === undefined) &#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h3 id="Why-is-the-result-of-‘typeof-null’-an-‘object’"><a href="#Why-is-the-result-of-‘typeof-null’-an-‘object’" class="headerlink" title="Why is the result of ‘typeof null’ an ‘object’?"></a>Why is the result of ‘typeof null’ an ‘object’?</h3><h2 id="Kernel"><a href="#Kernel" class="headerlink" title="Kernel"></a>Kernel</h2><p>The result of ‘typeof null’ being “object” is a legacy issue of the JavaScript language.</p>
+<p>In the original version of JavaScript, a 32-bit value was used to represent a variable, with the first 3 bits representing the type of the value. 000 represents an object, 010 represents a floating point number, 100 represents a string, 110 represents a Boolean value, and other values are all considered pointers.</p>
+<p>In this representation, null was interpreted as an all-zero pointer, that is, it is considered to be an empty object reference, so the result of typeof null is “object”.</p>
+<h2 id="expand"><a href="#expand" class="headerlink" title="expand"></a>expand</h2><p>Although this design is a legacy issue, it has become part of the JavaScript language for historical reasons and cannot be fixed. Therefore, it is recommended to use the strict equality operator (&#x3D;&#x3D;&#x3D;) when determining whether a variable is null.</p>
+<p>Can variables globally declared with ‘let’ be accessed via the window object?</p>
+<p>Variables declared with ‘let’ are not attached to the global ‘window’ object, and therefore cannot be accessed via ‘window.variablename’. This is different from variables declared with ‘var’, which are mounted on the global object and can be accessed via ‘window.variableName’.</p>
+<p>For example, consider the following code:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let foo = &#x27;bar&#x27;;</span><br><span class="line">var baz = &#x27;qux&#x27;;</span><br><span class="line">console.log(window.foo); // undefined</span><br><span class="line">console.log(window.baz); // &#x27;qux&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>In this code, the variable ‘foo’ declared with ‘let’ is not accessible through ‘window.foo’, while the variable ‘baz’ declared with ‘var’ is accessible through ‘window.baz’.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/07/When%20to%20Use%20===%20and%20==/" data-id="cm4ecou8s0008z1t0g1toainv" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/01/21/typeof%20null/" data-id="cm4ecou91000lz1t064gy2cmc" data-title="Why is the result of &#39;typeof null&#39; an &#39;object&#39;?" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-RequestAnimationFrame requestIdleCallback" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/21/RequestAnimationFrame%20requestIdleCallback/" class="article-date">
+  <time class="dt-published" datetime="2024-01-21T02:17:00.000Z" itemprop="datePublished">2024-01-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/01/21/RequestAnimationFrame%20requestIdleCallback/">What are the uses of &#39;requestAnimationFrame&#39; and &#39;requestIdleCallback&#39;, respectively?</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- ### What are the uses of 'requestAnimationFrame' and 'requestIdleCallback', respectively? -->
+
+<p>‘RequestAnimationFrame’ and ‘requestIdleCallback’ are both APIs used for performing animations or other high-performance tasks in the browser.</p>
+<p>‘RequestAnimationFrame’ is a mechanism provided by browsers to request an animation frame. It executes a specified callback function right before the browser’s next redraw. The advantage of this approach is that it allows the browser to automatically perform complex calculations and rendering tasks during the next draw, thus preventing the browser from repeating the same tasks within a short period. Using requestAnimationFrame can lead to smoother animations and reduce flickering and stuttering on web pages.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function animate() &#123;</span><br><span class="line"> // requestAnimationFrame(animate);</span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(animate);</span><br></pre></td></tr></table></figure>
+
+<p>RequestIdleCallback is a relatively new API that performs a specified callback function when the browser is idle. The purpose of this API is to enable developers to perform time-consuming tasks such as computation and rendering when the browser is idle. The advantage of this is that it can improve the performance and responsiveness of the web page, while also avoiding blocking the main thread of the browser, resulting in a poor user experience.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function doWork(deadline) &#123;</span><br><span class="line"> while (deadline.timeRemaining() &gt; 0) &#123;</span><br><span class="line"> // code here</span><br><span class="line"> &#125;</span><br><span class="line"> if (other task) &#123;</span><br><span class="line"> requestIdleCallback(doWork);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">requestIdleCallback(doWork);</span><br></pre></td></tr></table></figure>
+
+<p>Note that the callback function of requestIdleCallback accepts an IdleDeadline parameter, which contains information about the current idle time. Developers can use this parameter to schedule and optimize tasks according to the idle time of the browser.</p>
+<p>In summary, requestAnimationFrame is suitable for animation tasks that need to be executed before the next drawing, while requestIdleCallback is suitable for time-consuming tasks that need to be executed when the browser is idle.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/01/21/RequestAnimationFrame%20requestIdleCallback/" data-id="cm4ecou8i0006z1t0htdy54gq" data-title="What are the uses of &#39;requestAnimationFrame&#39; and &#39;requestIdleCallback&#39;, respectively?" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Ajax axios fetch" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/14/Ajax%20axios%20fetch/" class="article-date">
+  <time class="dt-published" datetime="2024-01-14T00:50:00.000Z" itemprop="datePublished">2024-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/01/14/Ajax%20axios%20fetch/">Differences among Ajax, axios, and fetch</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- # Differences among Ajax, axios, and fetch -->
+
+<h2 id="（1）AJAX"><a href="#（1）AJAX" class="headerlink" title="（1）AJAX"></a>（1）AJAX</h2><p>Ajax stands for “Asynchronous JavaScript and XML.” It’s a way to make web pages interactive without reloading the whole page. Ajax updates parts of a page by fetching a bit of data from the server behind the scenes. This means updates can happen without a full page refresh. Traditional web pages without Ajax need a full reload to update. However, Ajax is not perfect:</p>
+<p>● It’s more suited for MVC programming, not quite in line with the front-end MVVM trend.</p>
+<p>● Built on the not-so-clear architecture of native XHR.</p>
+<p>● Doesn’t quite stick to the Separation of Concerns principle.</p>
+<p>● Setup and calling methods can be a bit messy, and its event-based async model isn’t friendly.</p>
+<h2 id="（2）Fetch"><a href="#（2）Fetch" class="headerlink" title="（2）Fetch"></a>（2）Fetch</h2><p>Fetch is often seen as AJAX’s replacement, coming into play with ES6 and using its promise objects. It’s all about promises, making its code structure way simpler than Ajax. Fetch isn’t just a rewrap of Ajax; it’s native JavaScript and does not use XMLHttpRequest objects.</p>
+<h3 id="The-cool-things-about-fetch"><a href="#The-cool-things-about-fetch" class="headerlink" title="The cool things about fetch:"></a>The cool things about fetch:</h3><p>● Straightforward syntax, more semantic.</p>
+<p>● Built on the standard Promise, supports async&#x2F;await.</p>
+<p>● More fundamental, comes with a rich set of APIs (request, response).</p>
+<p>● Moves away from XHR, offering a new approach in ES standards.</p>
+<h3 id="The-not-so-cool-things-about-fetch"><a href="#The-not-so-cool-things-about-fetch" class="headerlink" title="The not-so-cool things about fetch:"></a>The not-so-cool things about fetch:</h3><p>● It only throws errors for network issues, treating 400s and 500s as successes. It won’t reject for these server errors unless it’s a network problem.</p>
+<p>● By default, fetch won’t carry cookies. You need to tweak it with: fetch(url, {credentials: ‘include’}).</p>
+<p>● Lacks support for aborting requests or controlling timeouts. Workarounds like setTimeout and Promise.reject can’t stop the ongoing background process, wasting data.</p>
+<p>● Can’t natively track the progress of requests, unlike XHR.</p>
+<h2 id="（3）Axios"><a href="#（3）Axios" class="headerlink" title="（3）Axios"></a>（3）Axios</h2><p>Axios is a Promise-based HTTP client. It’s features are as follows:</p>
+<p>● Launches XMLHttpRequests from browsers.</p>
+<p>● Handles HTTP requests in Node.js.</p>
+<p>● Supports the Promise API.</p>
+<p>● Tracks requests and responses.</p>
+<p>● Transforms requests and responses.</p>
+<p>● Can cancel requests.</p>
+<p>● Automatically handles JSON data.</p>
+<p>● The client side supports to guard against XSRF attacks.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/01/14/Ajax%20axios%20fetch/" data-id="cm4ecou7x0001z1t0ggt04bj2" data-title="Differences among Ajax, axios, and fetch" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-execution context" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/14/execution%20context/" class="article-date">
+  <time class="dt-published" datetime="2024-01-14T00:36:00.000Z" itemprop="datePublished">2024-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/01/14/execution%20context/">Understanding the execution context</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- ## Understanding the execution context  -->
+<ol>
+<li>Execution context type</li>
+</ol>
+<p>（1）global execution context</p>
+<p>Anything that is not inside a function is a global execution context. It first creates a global window object and sets the value of this object to be equal to this global object. A program has only one global execution context. </p>
+<p>（2）function execution context</p>
+<p>When a function is called, a new execution context is created for the function. The context of the function can be as many as possible. </p>
+<p>（3）* * eval * * function execution context  </p>
+<p>the code executed in the eval function has its own execution context. However, the eval function is not often used and is not introduced. </p>
+<h2 id="2-Execute-the-context-stack"><a href="#2-Execute-the-context-stack" class="headerlink" title="2. Execute the context stack"></a>2. Execute the context stack</h2><p>● the JavaScript engine uses the execution context stack to manage the execution context.</p>
+<p>● when the JavaScript executes the code, it first encounters the global code, creates a global execution context and presses it into the execution stack. Whenever a function call is encountered, it creates a new execution context for the function and presses it into the top of the stack. The engine executes the function at the top of the execution context stack. After the function execution is completed, the execution context pops up from the stack and continues to execute the next context. After all the code is executed, the global execution context pops up from the stack.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let a = &#x27;Hello World!&#x27;;</span><br><span class="line">function first() &#123;</span><br><span class="line">  console.log(&#x27;Inside first function&#x27;);</span><br><span class="line">  second();</span><br><span class="line">  console.log(&#x27;Again inside first function&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">function second() &#123;</span><br><span class="line">  console.log(&#x27;Inside second function&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">first();</span><br><span class="line">//order of excution</span><br><span class="line">// second()  first()</span><br></pre></td></tr></table></figure>
+<h2 id="3-Create-an-execution-context"><a href="#3-Create-an-execution-context" class="headerlink" title="3. Create an execution context"></a>3. Create an execution context</h2><p>there are two phases to create an execution context: creation phase and execution phase </p>
+<h3 id="1）creation-phase"><a href="#1）creation-phase" class="headerlink" title="1）creation phase"></a>1）creation phase</h3><p> （1）this binding<br>●<br>in the context of global execution, this point to a global object (window object) </p>
+<p>●<br>in the context of function execution, this point depends on how the function is called. If it is called by a reference object, this is set to that object, otherwise the value of this is set to global object or undefined </p>
+<p>###（2）create lexical environment components </p>
+<p>●<br>lexical environment is a kind identifier – Variable mapping the identifier refers to the variable&#x2F;function name, and the variable is a reference to the actual object or raw data.</p>
+<p>●<br>the lexical environment has two internal components: bold Style : environment recorder: used to store the actual location of variable function declarations references to external environments : you can access the parent scope. </p>
+<p>###（3）Create a variable environment component</p>
+<p>●<br>the variable environment is also a lexical environment. Its environment recorder holds the binding relationship created in the execution context of the variable declaration statement. </p>
+<h3 id="2）execution-phase"><a href="#2）execution-phase" class="headerlink" title="2）execution phase"></a>2）execution phase</h3><p>At this stage, variables are allocated and the code is executed. </p>
+<p>In short, the execution context refers:</p>
+<p>Before executing a little JS code, you need to parse the code. When parsing, a global execution context is created. First, the variables and function declarations to be executed in the code are taken out. The variables are assigned to undefined first, and the functions are declared to be available. After this step is completed, the formal execution procedure is started. </p>
+<p>Before a function is executed, a function execution context is also created, which is similar to the global execution context. However, this, arguments, and function parameters are added to the function execution context. </p>
+<p>●<br>global Context: variable definition, function declaration </p>
+<p>●<br>function context: variable definition, function declaration, this , arguments</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/01/14/execution%20context/" data-id="cm4ecou8z000gz1t052by9q0h" data-title="Understanding the execution context" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -103,13 +296,23 @@
   
     <article id="post-array-like objects" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/12/07/array-like%20objects/" class="article-date">
-  <time class="dt-published" datetime="2024-12-07T15:48:04.332Z" itemprop="datePublished">2024-12-07</time>
+    <a href="/2024/01/14/array-like%20objects/" class="article-date">
+  <time class="dt-published" datetime="2024-01-14T00:32:00.000Z" itemprop="datePublished">2024-01-14</time>
 </a>
     
   </div>
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/01/14/array-like%20objects/">The understanding of array-like objects</a>
+    </h1>
+  
+
+      </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
       
@@ -125,7 +328,76 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/07/array-like%20objects/" data-id="cm4ecou8s0009z1t01c3u7c1r" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/01/14/array-like%20objects/" data-id="cm4ecou8s0009z1t01c3u7c1r" data-title="The understanding of array-like objects" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-map weakMap" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/14/map%20weakMap/" class="article-date">
+  <time class="dt-published" datetime="2024-01-14T00:30:00.000Z" itemprop="datePublished">2024-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/01/14/map%20weakMap/">Differences between map and weakMap</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- # Differences between map and weakMap -->
+
+<h2 id="（1）Map"><a href="#（1）Map" class="headerlink" title="（1）Map"></a>（1）Map</h2><p>map is essentially a set of key-value pairs, but the key in a common Object can only be a string. The Map data structure provided by ES6 is similar to that of an object, but its keys do not limit the range. It can be of any type and is a more complete Hash structure. If the Map key is an original data type, it is considered the same key as long as the two keys are strictly the same. </p>
+<p>In fact, Map is an array, and each of its data is also an array, with the following format:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const map = [</span><br><span class="line">     [&quot;name&quot;,&quot;John&quot;],</span><br><span class="line">     [&quot;age&quot;,18],</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>The Map data structure has the following operation methods:</p>
+<p>● size： map.size<br>    map. size returns the total number of members of the Map structure. </p>
+<p>● set(key,value)：<br>  set the key value corresponding to the key name and key, and then return the entire Map structure. If the key already has a value, the key value is updated. Otherwise, the key is generated. (Because the current Map object is returned, it can be called in chain) </p>
+<p>● get(key)：<br>    This method reads the key value corresponding to the key. If the key cannot be found, the undefined is returned. </p>
+<p>● has(key)：<br>    This method returns a boolean value indicating whether a key is in the current Map object.<br>● delete(key)：</p>
+<p> This method deletes a key and returns true. If the key fails to be deleted, false is returned.</p>
+<p>● clear()：<br>    map.clear() clears all members. No return value is returned. </p>
+<p>The Map structure provides three traversal functions and a traversal method.</p>
+<p>● keys()： Returns an iterator for keys.</p>
+<p>● values()： Returns an iterator for values.</p>
+<p>● entries()：  Returns an iterator for all members.</p>
+<p>● forEach()：。 Traverses all members of the Map.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const map = new Map([</span><br><span class="line">     [&quot;foo&quot;,1],</span><br><span class="line">     [&quot;bar&quot;,2],</span><br><span class="line">])</span><br><span class="line">for(let key of map.keys())&#123;</span><br><span class="line">    console.log(key);  // foo bar</span><br><span class="line">&#125;</span><br><span class="line">for(let value of map.values())&#123;</span><br><span class="line">     console.log(value); // 1 2</span><br><span class="line">&#125;</span><br><span class="line">for(let items of map.entries())&#123;</span><br><span class="line">    console.log(items);  // [&quot;foo&quot;,1]  [&quot;bar&quot;,2]</span><br><span class="line">&#125;</span><br><span class="line">map.forEach( (value,key,map) =&gt; &#123;</span><br><span class="line">     console.log(key,value); // foo 1    bar 2</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="（2）WeakMap"><a href="#（2）WeakMap" class="headerlink" title="（2）WeakMap"></a>（2）WeakMap</h2><p>WeakMap object is also a set of key-value correct sets, where keys are weakly referenced. The key must be an object. , the original data type cannot be used as a key value, but the value can be arbitrary. </p>
+<p>This object also has the following methods: </p>
+<p>● set(key,value)：	<br>    set the key value corresponding to the key name and key, and then return the entire Map structure. If the key already has a value, the key value is updated. Otherwise, the key is generated. (Because the current Map object is returned, it can be called in chain)</p>
+<p>● get(key)：<br>    This method reads the key value corresponding to the key. If the key cannot be found, the undefined is returned. </p>
+<p>● has(key)：<br>    This method returns a boolean value indicating whether a key is in the current Map object. </p>
+<p>● delete(key)：<br>    This method deletes a key and returns true. If the key fails to be deleted, false is returned. </p>
+<p>The clear() method has been deprecated, so you can clear it by creating an empty WeakMap and replacing the original object.</p>
+<p>The purpose of WeakMap is to store some data on an object sometimes, but this will form a reference to the object. Once the two objects are no longer needed, you must manually delete the reference. Otherwise, the garbage collection mechanism will not release the memory occupied by the objects.</p>
+<p>And WeakMap the objects referenced by key names are all weak references. , that is, the garbage collection mechanism does not take this reference into account. Therefore, as long as other references of the referenced object are cleared, the garbage collection mechanism releases the memory occupied by the object. That is to say, once it is no longer needed, WeakMap the key name object and the corresponding key-value pair disappear automatically. You do not need to delete the reference manually. .</p>
+<p>Summary: </p>
+<p>●<br>    Map data structure. It is similar to an object and is also a set of correct key values. However, the range of “keys” is not limited to strings. Various types of values (including objects) can be treated as keys.</p>
+<p>●<br>    The WeakMap structure is similar to the Map structure and is also used to generate the correct set of key values. However, WeakMap only accept objects as key names (except null) and do not accept other types of values as key names. The objects pointed to by the key name of the WeakMap are not included in the garbage collection mechanism.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/01/14/map%20weakMap/" data-id="cm4ecou8z000iz1t0apyid86l" data-title="Differences between map and weakMap" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -139,17 +411,29 @@
   
     <article id="post-arrow functions" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/12/07/arrow%20functions/" class="article-date">
-  <time class="dt-published" datetime="2024-12-07T15:48:04.332Z" itemprop="datePublished">2024-12-07</time>
+    <a href="/2024/01/14/arrow%20functions/" class="article-date">
+  <time class="dt-published" datetime="2024-01-14T00:27:00.000Z" itemprop="datePublished">2024-01-14</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/01/14/arrow%20functions/">What happens if you create a new arrow function</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="What-happens-if-you-create-a-new-arrow-function"><a href="#What-happens-if-you-create-a-new-arrow-function" class="headerlink" title="What happens if you create a new arrow function"></a>What happens if you create a new arrow function</h1><p>The arrow function is introduced in ES6. It does not have a prototype, nor does it have its own this reference, and it cannot use the arguments parameter. Therefore, it is not possible to use the new operator with an arrow function.</p>
+        <!-- # What happens if you create a new arrow function -->
+
+<p>The arrow function is introduced in ES6. It does not have a prototype, nor does it have its own this reference, and it cannot use the arguments parameter. Therefore, it is not possible to use the new operator with an arrow function.</p>
 <h2 id="The-steps-to-implement-the-new-operator-are-as-follows"><a href="#The-steps-to-implement-the-new-operator-are-as-follows" class="headerlink" title="The steps to implement the new operator are as follows:"></a>The steps to implement the new operator are as follows:</h2><p>1.Create a new object</p>
 <ol start="2">
 <li><p>Assign the constructor function’s scope to the new object (in other words, set the object’s proto property to point to the constructor function’s prototype property)</p>
@@ -181,7 +465,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/07/arrow%20functions/" data-id="cm4ecou8t000az1t0g4gl46k6" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/01/14/arrow%20functions/" data-id="cm4ecou8t000az1t0g4gl46k6" data-title="What happens if you create a new arrow function" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -193,206 +477,48 @@
 
 
   
-    <article id="post-README" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-== operator" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/12/07/README/" class="article-date">
-  <time class="dt-published" datetime="2024-12-07T15:48:04.331Z" itemprop="datePublished">2024-12-07</time>
+    <a href="/2024/01/08/==%20operator/" class="article-date">
+  <time class="dt-published" datetime="2024-01-08T00:43:00.000Z" itemprop="datePublished">2024-01-08</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Common Concepts of JavaScript</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/07/README/" data-id="cm4ecou8f0005z1t0dyojdoex" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
+      <header class="article-header">
+        
   
-</article>
-
-
-
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/01/08/==%20operator/">What are the rules for type coercion of the == operator?</a>
+    </h1>
   
-    <article id="post-RequestAnimationFrame requestIdleCallback" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/12/07/RequestAnimationFrame%20requestIdleCallback/" class="article-date">
-  <time class="dt-published" datetime="2024-12-07T15:48:04.331Z" itemprop="datePublished">2024-12-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
+
+      </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="What-are-the-uses-of-‘requestAnimationFrame’-and-‘requestIdleCallback’-respectively"><a href="#What-are-the-uses-of-‘requestAnimationFrame’-and-‘requestIdleCallback’-respectively" class="headerlink" title="What are the uses of ‘requestAnimationFrame’ and ‘requestIdleCallback’, respectively?"></a>What are the uses of ‘requestAnimationFrame’ and ‘requestIdleCallback’, respectively?</h3><p>‘RequestAnimationFrame’ and ‘requestIdleCallback’ are both APIs used for performing animations or other high-performance tasks in the browser.</p>
-<p>‘RequestAnimationFrame’ is a mechanism provided by browsers to request an animation frame. It executes a specified callback function right before the browser’s next redraw. The advantage of this approach is that it allows the browser to automatically perform complex calculations and rendering tasks during the next draw, thus preventing the browser from repeating the same tasks within a short period. Using requestAnimationFrame can lead to smoother animations and reduce flickering and stuttering on web pages.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function animate() &#123;</span><br><span class="line"> // requestAnimationFrame(animate);</span><br><span class="line">&#125;</span><br><span class="line">requestAnimationFrame(animate);</span><br></pre></td></tr></table></figure>
-
-<p>RequestIdleCallback is a relatively new API that performs a specified callback function when the browser is idle. The purpose of this API is to enable developers to perform time-consuming tasks such as computation and rendering when the browser is idle. The advantage of this is that it can improve the performance and responsiveness of the web page, while also avoiding blocking the main thread of the browser, resulting in a poor user experience.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function doWork(deadline) &#123;</span><br><span class="line"> while (deadline.timeRemaining() &gt; 0) &#123;</span><br><span class="line"> // code here</span><br><span class="line"> &#125;</span><br><span class="line"> if (other task) &#123;</span><br><span class="line"> requestIdleCallback(doWork);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">requestIdleCallback(doWork);</span><br></pre></td></tr></table></figure>
-
-<p>Note that the callback function of requestIdleCallback accepts an IdleDeadline parameter, which contains information about the current idle time. Developers can use this parameter to schedule and optimize tasks according to the idle time of the browser.</p>
-<p>In summary, requestAnimationFrame is suitable for animation tasks that need to be executed before the next drawing, while requestIdleCallback is suitable for time-consuming tasks that need to be executed when the browser is idle.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/07/RequestAnimationFrame%20requestIdleCallback/" data-id="cm4ecou8i0006z1t0htdy54gq" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
+        <!-- # What are the rules for type coercion of the == operator? -->
 
 
-
-  
-    <article id="post-Symbol" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/12/07/Symbol/" class="article-date">
-  <time class="dt-published" datetime="2024-12-07T15:48:04.331Z" itemprop="datePublished">2024-12-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="What-is-the-purpose-of-the-newly-added-primitive-data-type-“Symbol”"><a href="#What-is-the-purpose-of-the-newly-added-primitive-data-type-“Symbol”" class="headerlink" title="What is the purpose of the newly added primitive data type “Symbol”?"></a>What is the purpose of the newly added primitive data type “Symbol”?</h3><h4 id="Discuss-conceptual-questions"><a href="#Discuss-conceptual-questions" class="headerlink" title="Discuss conceptual questions"></a>Discuss conceptual questions</h4><p>‘Symbol’ is a primitive data type introduced in ES6. Its primary purpose is to create a unique identifier, which is used in scenarios such as naming object properties, defining constants, and so on.</p>
-<p>Understanding with Examples</p>
-<p>Each ‘Symbol’ is unique and can be used as a property name for objects, which helps to avoid conflicts with property names. For example:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const s1 = Symbol();</span><br><span class="line">const s2 = Symbol();</span><br><span class="line">const obj = &#123;</span><br><span class="line"> [s1]: &#x27;hello&#x27;,</span><br><span class="line"> [s2]: &#x27;world&#x27;</span><br><span class="line">&#125;;</span><br><span class="line">console.log(obj[s1]); // &quot;hello&quot;console.log(obj[s2]); // &quot;world&quot;</span><br></pre></td></tr></table></figure>
-
-
-<p>In addition, symbol can also be used to implement constants or enumeration values, which are immutable and unique, such as:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const Colors = &#123;</span><br><span class="line"> Red: Symbol(&#x27;Red&#x27;),</span><br><span class="line"> Green: Symbol(&#x27;Green&#x27;),</span><br><span class="line"> Blue: Symbol(&#x27;Blue&#x27;)</span><br><span class="line">&#125;;</span><br><span class="line">console.log(Colors.Red); // Symbol(Red)console.log(Colors.Green); // Symbol(Green)console.log(Colors.Blue); // Symbol(Blue)</span><br></pre></td></tr></table></figure>
-
-
-<p>As Symbol is a primitive data type, it offers high performance and reliability, making it suitable for scenarios requiring efficient and secure creation and usage of identifiers.</p>
-<h3 id="Important-Considerations"><a href="#Important-Considerations" class="headerlink" title="Important Considerations"></a>Important Considerations</h3><p>Another significant characteristic of Symbol is that it does not appear in object property iteration methods like for…in, for…of, Object.keys(), Object.getOwnPropertyNames(), and so on. Therefore, it can be used to define properties that should not be iterated over, such as internal implementation details or hidden attributes.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/07/Symbol/" data-id="cm4ecou8n0007z1t01ahh8i75" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-FlattenArray" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/12/07/FlattenArray/" class="article-date">
-  <time class="dt-published" datetime="2024-12-07T15:48:04.330Z" itemprop="datePublished">2024-12-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="Flatten-the-array"><a href="#Flatten-the-array" class="headerlink" title="Flatten the array"></a>Flatten the array</h3><h4 id="1-Recursive-implementation"><a href="#1-Recursive-implementation" class="headerlink" title="(1) Recursive implementation"></a>(1) Recursive implementation</h4><p>The common idea behind recursion is straightforward, involving a circular recursion approach where each item is iterated over. If an item is still an array, the process continues recursively to achieve the concatenation of each array item.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, [2, [3, 4, 5]]];</span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">  let result = [];</span><br><span class="line"></span><br><span class="line">  for(let i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">    if(Array.isArray(arr[i])) &#123;</span><br><span class="line">      result = result.concat(flatten(arr[i]));</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      result.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br><span class="line">flatten(arr);  //  [1, 2, 3, 4，5]</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-reduce-function-iteration"><a href="#2-reduce-function-iteration" class="headerlink" title="(2) reduce function iteration"></a>(2) reduce function iteration</h4><p>From the ordinary recursive function described above, it’s clear that each array item is processed individually. In fact, the reduce method can also be used for array concatenation, thus simplifying the code from the first method. The transformed code is as follows:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, [2, [3, 4]]];</span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">    return arr.reduce(function(prev, next)&#123;</span><br><span class="line">        return prev.concat(Array.isArray(next) ? flatten(next) : next)</span><br><span class="line">    &#125;, [])</span><br><span class="line">&#125;</span><br><span class="line">console.log(flatten(arr));//  [1, 2, 3, 4，5]</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-Extension-operator-implementation"><a href="#3-Extension-operator-implementation" class="headerlink" title="(3) Extension operator implementation"></a>(3) Extension operator implementation</h4><p>This method’s implementation involves the use of the spread operator and the some method, both used in conjunction to achieve array flattening:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, [2, [3, 4]]];</span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">    while (arr.some(item =&gt; Array.isArray(item))) &#123;</span><br><span class="line">        arr = [].concat(...arr);</span><br><span class="line">    &#125;</span><br><span class="line">    return arr;</span><br><span class="line">&#125;</span><br><span class="line">console.log(flatten(arr)); //  [1, 2, 3, 4，5]</span><br></pre></td></tr></table></figure>
-<h4 id="（4）split-and-toString"><a href="#（4）split-and-toString" class="headerlink" title="（4）split and toString"></a>（4）split and toString</h4><p>The split and toString methods are used to flatten the array. Since the array has a toString method by default, you can convert the array directly to a comma-separated string, and then use the split method to convert the string back to the array, as shown in the following code:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, [2, [3, 4]]];</span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">    return arr.toString().split(&#x27;,&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">console.log(flatten(arr)); //  [1, 2, 3, 4，5]</span><br></pre></td></tr></table></figure>
-
-
-<p>Using these two methods, a multidimensional array can be directly converted into a comma-separated string, which is then split back into an array.</p>
-<p>####(5) flat in ES6</p>
-<p>We can also directly call the flat method in ES6 to implement array flattening. Syntax for the flat method: arr.flat([depth])</p>
-<p>depth is the parameter of flat, depth is the expansion depth of the array can be passed (the default is not filled, the value is 1), that is, expand a layer of array. If the number of layers is uncertain, the parameter can be passed into Infinity, which means that no matter how many layers are expanded:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, [2, [3, 4]]];</span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">  return arr.flat(Infinity);</span><br><span class="line">&#125;</span><br><span class="line">console.log(flatten(arr)); //  [1, 2, 3, 4，5]</span><br></pre></td></tr></table></figure>
-
-
-<p>As you can see, a nested array of two layers achieves the desired effect by setting the parameter of the flat method to Infinity. In fact, it can also be set to 2, which can also achieve this effect. In the programming process, if the number of nested layers of the array is uncertain, it is best to use Infinity directly, which can achieve flatness.</p>
-<h4 id="6-RE-and-JSON-methods"><a href="#6-RE-and-JSON-methods" class="headerlink" title="(6) RE and JSON methods"></a>(6) RE and JSON methods</h4><p>The toString method is already used in the fourth method, which still uses the JSON.stringify method to convert it to a string, then filters out the array square brackets in the string through regular expressions, and finally converts it to an array using JSON.parse:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, [2, [3, [4, 5]]], 6];</span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">  let str = JSON.stringify(arr);</span><br><span class="line">  str = str.replace(/(\[|\])/g, &#x27;&#x27;);</span><br><span class="line">  str = &#x27;[&#x27; + str + &#x27;]&#x27;;</span><br><span class="line">  return JSON.parse(str); </span><br><span class="line">&#125;</span><br><span class="line">console.log(flatten(arr)); //  [1, 2, 3, 4，5]</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/07/FlattenArray/" data-id="cm4ecou860003z1t04ebccfqg" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-ImplementingTheApplyFunctionManually" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2024/12/07/ImplementingTheApplyFunctionManually/" class="article-date">
-  <time class="dt-published" datetime="2024-12-07T15:48:04.330Z" itemprop="datePublished">2024-12-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="Implementing-the-apply-Function-Manually"><a href="#Implementing-the-apply-Function-Manually" class="headerlink" title="Implementing the apply Function Manually"></a>Implementing the apply Function Manually</h2><h3 id="Steps-to-implement-the-apply-function"><a href="#Steps-to-implement-the-apply-function" class="headerlink" title="Steps to implement the apply function:"></a>Steps to implement the apply function:</h3><ol>
-<li><p>Determine if the calling object is a function. Even though it’s defined on the function’s prototype, there may be instances where it is invoked using methods like call.</p>
-</li>
-<li><p>Check if the incoming context object exists; if not, set it to window.</p>
-</li>
-<li><p>Assign the function as a property of the context object.</p>
-</li>
-<li><p>Determine if the parameter values have been passed in.</p>
-</li>
-<li><p>Invoke the method using the context object and save the returned result.</p>
-</li>
-<li><p>Remove the property that was just added.</p>
-</li>
-<li><p>Return the result</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// apply </span><br><span class="line">Function.prototype.myApply = function(context) &#123;</span><br><span class="line">  </span><br><span class="line">  if (typeof this !== &quot;function&quot;) &#123;</span><br><span class="line">    throw new TypeError(&quot;Error&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  let result = null;</span><br><span class="line">  // check context  or set to window</span><br><span class="line">  context = context || window;</span><br><span class="line">  // set funcion</span><br><span class="line">  context.fn = this;</span><br><span class="line">  // call the method</span><br><span class="line">  if (arguments[1]) &#123;</span><br><span class="line">    result = context.fn(...arguments[1]);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    result = context.fn();</span><br><span class="line">  &#125;</span><br><span class="line">  // del property</span><br><span class="line">  delete context.fn;</span><br><span class="line">  return result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<p>For the &#x3D;&#x3D; operator,if the types of the two operands being compared are different, the type conversion is performed. If you compare whether x and y are the same, the following judgment process will be performed:</p>
+<ol>
+<li>First, it will determine whether the two types are the same, and compare the size of the two if they are the same;</li>
 </ol>
-<h3 id="Implementing-the-bind-Function-Manually"><a href="#Implementing-the-bind-Function-Manually" class="headerlink" title="Implementing the bind Function Manually"></a>Implementing the bind Function Manually</h3><h4 id="Steps-to-implement-the-bind-function"><a href="#Steps-to-implement-the-bind-function" class="headerlink" title="Steps to implement the bind function:"></a>Steps to implement the bind function:</h4><ol>
-<li><p>Determine if the calling object is a function. Even though it’s defined on the function’s prototype, there may be instances where it is invoked using methods like call.</p>
-</li>
-<li><p>Save a reference to the current function and retrieve the rest of the passed-in parameter values.</p>
-</li>
-<li><p>Return a new function.</p>
-</li>
-<li><p>Internally, the function uses apply to bind the function call. It’s important to account for the function being used as a constructor. In such cases, the current function’s ‘this’ needs to be passed to apply, while in all other cases, the specified context object is passed.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// bind </span><br><span class="line">Function.prototype.myBind = function(context) &#123;</span><br><span class="line">  </span><br><span class="line">  if (typeof this !== &quot;function&quot;) &#123;</span><br><span class="line">    throw new TypeError(&quot;Error&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  // get parm</span><br><span class="line">  var args = [...arguments].slice(1),</span><br><span class="line">      fn = this;</span><br><span class="line">  return function Fn() &#123;</span><br><span class="line">    return fn.apply(</span><br><span class="line">      this instanceof Fn ? this : context,</span><br><span class="line">      args.concat(...arguments)</span><br><span class="line">    );</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
-</ol>
+<p>2.If the types are not the same, type conversion will be performed;</p>
+<p>3.It will first determine whether it is comparing null and undefined, and if it is, it will return true</p>
+<p>4.Check if the types of both are string and number, if so, the string will be converted to number.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 == &#x27;1&#x27;</span><br><span class="line">      ↓</span><br><span class="line">1 ==  1</span><br></pre></td></tr></table></figure>
+
+<p>5.To determine whether one of the parties is a boolean, if so, it will change the boolean to number and then make a judgment</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x27;1&#x27; == true</span><br><span class="line">        ↓</span><br><span class="line">&#x27;1&#x27; ==  1</span><br><span class="line">        ↓</span><br><span class="line"> 1  ==  1</span><br></pre></td></tr></table></figure>
+<p>6.Determine if one of the elements is an object and the other is a string, number, or symbol. If so, the object will be converted to its primitive type before the comparison.<br>  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x27;1&#x27; == &#123; name: &#x27;js&#x27; &#125;</span><br><span class="line">        ↓</span><br><span class="line">&#x27;1&#x27; == &#x27;[object Object]&#x27;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/07/ImplementingTheApplyFunctionManually/" data-id="cm4ecou8a0004z1t0em2vevkv" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/01/08/==%20operator/" data-id="cm4ecou7q0000z1t0blw71r59" data-title="What are the rules for type coercion of the == operator?" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -404,46 +530,40 @@
 
 
   
-    <article id="post-Ajax axios fetch" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-null-and-undefined" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/12/07/Ajax%20axios%20fetch/" class="article-date">
-  <time class="dt-published" datetime="2024-12-07T15:48:04.329Z" itemprop="datePublished">2024-12-07</time>
+    <a href="/2024/01/08/null-and-undefined/" class="article-date">
+  <time class="dt-published" datetime="2024-01-07T22:56:00.000Z" itemprop="datePublished">2024-01-08</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/01/08/null-and-undefined/">The difference between null and undefined</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="Differences-among-Ajax-axios-and-fetch"><a href="#Differences-among-Ajax-axios-and-fetch" class="headerlink" title="Differences among Ajax, axios, and fetch"></a>Differences among Ajax, axios, and fetch</h1><h2 id="（1）AJAX"><a href="#（1）AJAX" class="headerlink" title="（1）AJAX"></a>（1）AJAX</h2><p>Ajax stands for “Asynchronous JavaScript and XML.” It’s a way to make web pages interactive without reloading the whole page. Ajax updates parts of a page by fetching a bit of data from the server behind the scenes. This means updates can happen without a full page refresh. Traditional web pages without Ajax need a full reload to update. However, Ajax is not perfect:</p>
-<p>● It’s more suited for MVC programming, not quite in line with the front-end MVVM trend.</p>
-<p>● Built on the not-so-clear architecture of native XHR.</p>
-<p>● Doesn’t quite stick to the Separation of Concerns principle.</p>
-<p>● Setup and calling methods can be a bit messy, and its event-based async model isn’t friendly.</p>
-<h2 id="（2）Fetch"><a href="#（2）Fetch" class="headerlink" title="（2）Fetch"></a>（2）Fetch</h2><p>Fetch is often seen as AJAX’s replacement, coming into play with ES6 and using its promise objects. It’s all about promises, making its code structure way simpler than Ajax. Fetch isn’t just a rewrap of Ajax; it’s native JavaScript and does not use XMLHttpRequest objects.</p>
-<h3 id="The-cool-things-about-fetch"><a href="#The-cool-things-about-fetch" class="headerlink" title="The cool things about fetch:"></a>The cool things about fetch:</h3><p>● Straightforward syntax, more semantic.</p>
-<p>● Built on the standard Promise, supports async&#x2F;await.</p>
-<p>● More fundamental, comes with a rich set of APIs (request, response).</p>
-<p>● Moves away from XHR, offering a new approach in ES standards.</p>
-<h3 id="The-not-so-cool-things-about-fetch"><a href="#The-not-so-cool-things-about-fetch" class="headerlink" title="The not-so-cool things about fetch:"></a>The not-so-cool things about fetch:</h3><p>● It only throws errors for network issues, treating 400s and 500s as successes. It won’t reject for these server errors unless it’s a network problem.</p>
-<p>● By default, fetch won’t carry cookies. You need to tweak it with: fetch(url, {credentials: ‘include’}).</p>
-<p>● Lacks support for aborting requests or controlling timeouts. Workarounds like setTimeout and Promise.reject can’t stop the ongoing background process, wasting data.</p>
-<p>● Can’t natively track the progress of requests, unlike XHR.</p>
-<h2 id="（3）Axios"><a href="#（3）Axios" class="headerlink" title="（3）Axios"></a>（3）Axios</h2><p>Axios is a Promise-based HTTP client. It’s features are as follows:</p>
-<p>● Launches XMLHttpRequests from browsers.</p>
-<p>● Handles HTTP requests in Node.js.</p>
-<p>● Supports the Promise API.</p>
-<p>● Tracks requests and responses.</p>
-<p>● Transforms requests and responses.</p>
-<p>● Can cancel requests.</p>
-<p>● Automatically handles JSON data.</p>
-<p>● The client side supports to guard against XSRF attacks.</p>
+        <!-- # The difference between null and undefined -->
+
+
+<p>First of all, Undefined and Null are both basic data types. Each of these two basic data types has only one value, which is undefined and null.</p>
+<p>Undefined means undefined, while null means empty object. When a general variable is declared but not yet defined, it will return undefined. null is mainly used to assign values to variables that may return objects as initialization.</p>
+<p>Undefined is not a reserved word in JavaScript, which means that it can be used as a variable name, but this approach is very dangerous as it can affect the judgment of the undefined value. We can obtain secure undefined values through some methods, such as void 0.</p>
+<p>When using typeof to judge these two types, Null typing will return “object”, which is a historical problem. Returns true when using a double equal sign to compare two types of values, and returns false when using a triple equal sign.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/07/Ajax%20axios%20fetch/" data-id="cm4ecou7x0001z1t0ggt04bj2" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/01/08/null-and-undefined/" data-id="cm4ecou91000jz1t02mfs2n1r" data-title="The difference between null and undefined" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -457,17 +577,29 @@
   
     <article id="post-DataTypes-for-Javascript" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2024/12/07/DataTypes-for-Javascript/" class="article-date">
-  <time class="dt-published" datetime="2024-12-07T15:48:04.329Z" itemprop="datePublished">2024-12-07</time>
+    <a href="/2024/01/08/DataTypes-for-Javascript/" class="article-date">
+  <time class="dt-published" datetime="2024-01-07T22:55:00.000Z" itemprop="datePublished">2024-01-08</time>
 </a>
     
   </div>
   <div class="article-inner">
     
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2024/01/08/DataTypes-for-Javascript/">Data types for Javascript</a>
+    </h1>
+  
+
+      </header>
+    
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="Data-types-for-Javascript"><a href="#Data-types-for-Javascript" class="headerlink" title="Data types for Javascript"></a>Data types for Javascript</h1><h2 id="What-data-types-does-JavaScript-have-and-how-do-they-differ"><a href="#What-data-types-does-JavaScript-have-and-how-do-they-differ" class="headerlink" title="What data types does JavaScript have and how do they differ"></a>What data types does JavaScript have and how do they differ</h2><p>JavaScript has eight data types: Undefined, Null, Boolean, Number, String, Object, Symbol, and BigInt.</p>
+        <!-- # Data types for Javascript -->
+
+<h2 id="What-data-types-does-JavaScript-have-and-how-do-they-differ"><a href="#What-data-types-does-JavaScript-have-and-how-do-they-differ" class="headerlink" title="What data types does JavaScript have and how do they differ"></a>What data types does JavaScript have and how do they differ</h2><p>JavaScript has eight data types: Undefined, Null, Boolean, Number, String, Object, Symbol, and BigInt.</p>
 <p>Where Symbol and BigInt are new data types in ES6:</p>
 <p>● Symbol represents a unique and immutable data type created to resolve possible global variable conflicts.</p>
 <p>● BigInt is a numeric type of data that can represent integers in any precision format. BigInt can be used to safely store and manipulate large integers, even if the Number is outside the range of safe integers that number can represent.</p>
@@ -487,7 +619,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2024/12/07/DataTypes-for-Javascript/" data-id="cm4ecou820002z1t07whpbq7v" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2024/01/08/DataTypes-for-Javascript/" data-id="cm4ecou820002z1t07whpbq7v" data-title="Data types for Javascript" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -503,7 +635,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 </section>
@@ -522,7 +654,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/12/">December 2024</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li></ul>
     </div>
   </div>
 
@@ -535,23 +667,23 @@
       <ul>
         
           <li>
-            <a href="/2024/12/07/typeof%20null/">(no title)</a>
+            <a href="/2024/11/17/commonUseOfClosure/">two common use of closure</a>
           </li>
         
           <li>
-            <a href="/2024/12/07/map%20weakMap/">(no title)</a>
+            <a href="/2024/11/16/protoType%20and%20%20protoType%20Chain/">protoType and protoType Chain</a>
           </li>
         
           <li>
-            <a href="/2024/12/07/null-and-undefined/">(no title)</a>
+            <a href="/2024/11/13/When%20to%20Use%20===%20and%20==/">When to Use === and ==</a>
           </li>
         
           <li>
-            <a href="/2024/12/07/protoType%20and%20%20protoType%20Chain/">(no title)</a>
+            <a href="/2024/11/13/deepClone/">Implement deepClone manually</a>
           </li>
         
           <li>
-            <a href="/2024/12/07/deepCopy/">(no title)</a>
+            <a href="/2024/03/26/decode%20message/">decode message</a>
           </li>
         
       </ul>
@@ -567,7 +699,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2024 John Doe<br>
+      &copy; 2024 huck@love<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

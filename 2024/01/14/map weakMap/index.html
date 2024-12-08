@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Differences between map and weakMap | Huck&#39;s dev blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="（1）Mapmap is essentially a set of key-value pairs, but the key in a common Object can only be a string. The Map data structure provided by ES6 is similar to that of an object, but its keys do not li">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Differences between map and weakMap">
+<meta property="og:url" content="http://example.com/2024/01/14/map%20weakMap/index.html">
+<meta property="og:site_name" content="Huck&#39;s dev blog">
+<meta property="og:description" content="（1）Mapmap is essentially a set of key-value pairs, but the key in a common Object can only be a string. The Map data structure provided by ES6 is similar to that of an object, but its keys do not li">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-01-14T00:30:00.000Z">
+<meta property="article:modified_time" content="2024-12-08T15:42:10.850Z">
+<meta property="article:author" content="huck@love">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Huck's dev blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Huck&#39;s dev blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-map weakMap" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/14/map%20weakMap/" class="article-date">
+  <time class="dt-published" datetime="2024-01-14T00:30:00.000Z" itemprop="datePublished">2024-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Differences between map and weakMap
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- # Differences between map and weakMap -->
+
+<h2 id="（1）Map"><a href="#（1）Map" class="headerlink" title="（1）Map"></a>（1）Map</h2><p>map is essentially a set of key-value pairs, but the key in a common Object can only be a string. The Map data structure provided by ES6 is similar to that of an object, but its keys do not limit the range. It can be of any type and is a more complete Hash structure. If the Map key is an original data type, it is considered the same key as long as the two keys are strictly the same. </p>
+<p>In fact, Map is an array, and each of its data is also an array, with the following format:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const map = [</span><br><span class="line">     [&quot;name&quot;,&quot;John&quot;],</span><br><span class="line">     [&quot;age&quot;,18],</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>The Map data structure has the following operation methods:</p>
+<p>● size： map.size<br>    map. size returns the total number of members of the Map structure. </p>
+<p>● set(key,value)：<br>  set the key value corresponding to the key name and key, and then return the entire Map structure. If the key already has a value, the key value is updated. Otherwise, the key is generated. (Because the current Map object is returned, it can be called in chain) </p>
+<p>● get(key)：<br>    This method reads the key value corresponding to the key. If the key cannot be found, the undefined is returned. </p>
+<p>● has(key)：<br>    This method returns a boolean value indicating whether a key is in the current Map object.<br>● delete(key)：</p>
+<p> This method deletes a key and returns true. If the key fails to be deleted, false is returned.</p>
+<p>● clear()：<br>    map.clear() clears all members. No return value is returned. </p>
+<p>The Map structure provides three traversal functions and a traversal method.</p>
+<p>● keys()： Returns an iterator for keys.</p>
+<p>● values()： Returns an iterator for values.</p>
+<p>● entries()：  Returns an iterator for all members.</p>
+<p>● forEach()：。 Traverses all members of the Map.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">const map = new Map([</span><br><span class="line">     [&quot;foo&quot;,1],</span><br><span class="line">     [&quot;bar&quot;,2],</span><br><span class="line">])</span><br><span class="line">for(let key of map.keys())&#123;</span><br><span class="line">    console.log(key);  // foo bar</span><br><span class="line">&#125;</span><br><span class="line">for(let value of map.values())&#123;</span><br><span class="line">     console.log(value); // 1 2</span><br><span class="line">&#125;</span><br><span class="line">for(let items of map.entries())&#123;</span><br><span class="line">    console.log(items);  // [&quot;foo&quot;,1]  [&quot;bar&quot;,2]</span><br><span class="line">&#125;</span><br><span class="line">map.forEach( (value,key,map) =&gt; &#123;</span><br><span class="line">     console.log(key,value); // foo 1    bar 2</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="（2）WeakMap"><a href="#（2）WeakMap" class="headerlink" title="（2）WeakMap"></a>（2）WeakMap</h2><p>WeakMap object is also a set of key-value correct sets, where keys are weakly referenced. The key must be an object. , the original data type cannot be used as a key value, but the value can be arbitrary. </p>
+<p>This object also has the following methods: </p>
+<p>● set(key,value)：	<br>    set the key value corresponding to the key name and key, and then return the entire Map structure. If the key already has a value, the key value is updated. Otherwise, the key is generated. (Because the current Map object is returned, it can be called in chain)</p>
+<p>● get(key)：<br>    This method reads the key value corresponding to the key. If the key cannot be found, the undefined is returned. </p>
+<p>● has(key)：<br>    This method returns a boolean value indicating whether a key is in the current Map object. </p>
+<p>● delete(key)：<br>    This method deletes a key and returns true. If the key fails to be deleted, false is returned. </p>
+<p>The clear() method has been deprecated, so you can clear it by creating an empty WeakMap and replacing the original object.</p>
+<p>The purpose of WeakMap is to store some data on an object sometimes, but this will form a reference to the object. Once the two objects are no longer needed, you must manually delete the reference. Otherwise, the garbage collection mechanism will not release the memory occupied by the objects.</p>
+<p>And WeakMap the objects referenced by key names are all weak references. , that is, the garbage collection mechanism does not take this reference into account. Therefore, as long as other references of the referenced object are cleared, the garbage collection mechanism releases the memory occupied by the object. That is to say, once it is no longer needed, WeakMap the key name object and the corresponding key-value pair disappear automatically. You do not need to delete the reference manually. .</p>
+<p>Summary: </p>
+<p>●<br>    Map data structure. It is similar to an object and is also a set of correct key values. However, the range of “keys” is not limited to strings. Various types of values (including objects) can be treated as keys.</p>
+<p>●<br>    The WeakMap structure is similar to the Map structure and is also used to generate the correct set of key values. However, WeakMap only accept objects as key names (except null) and do not accept other types of values as key names. The objects pointed to by the key name of the WeakMap are not included in the garbage collection mechanism.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/01/14/map%20weakMap/" data-id="cm4ecou8z000iz1t0apyid86l" data-title="Differences between map and weakMap" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/01/14/array-like%20objects/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          The understanding of array-like objects
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/01/14/arrow%20functions/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">What happens if you create a new arrow function</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/11/17/commonUseOfClosure/">two common use of closure</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/16/protoType%20and%20%20protoType%20Chain/">protoType and protoType Chain</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/13/When%20to%20Use%20===%20and%20==/">When to Use === and ==</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/13/deepClone/">Implement deepClone manually</a>
+          </li>
+        
+          <li>
+            <a href="/2024/03/26/decode%20message/">decode message</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 huck@love<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

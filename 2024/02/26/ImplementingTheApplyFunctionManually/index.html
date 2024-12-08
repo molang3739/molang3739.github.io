@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Implementing the apply Function Manually | Huck&#39;s dev blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Steps to implement the apply function: Determine if the calling object is a function. Even though it’s defined on the function’s prototype, there may be instances where it is invoked using methods">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Implementing the apply Function Manually">
+<meta property="og:url" content="http://example.com/2024/02/26/ImplementingTheApplyFunctionManually/index.html">
+<meta property="og:site_name" content="Huck&#39;s dev blog">
+<meta property="og:description" content="Steps to implement the apply function: Determine if the calling object is a function. Even though it’s defined on the function’s prototype, there may be instances where it is invoked using methods">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-26T02:28:00.000Z">
+<meta property="article:modified_time" content="2024-12-08T15:56:38.753Z">
+<meta property="article:author" content="huck@love">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Huck's dev blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Huck&#39;s dev blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-ImplementingTheApplyFunctionManually" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/26/ImplementingTheApplyFunctionManually/" class="article-date">
+  <time class="dt-published" datetime="2024-02-26T02:28:00.000Z" itemprop="datePublished">2024-02-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Implementing the apply Function Manually
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- ##  Implementing the apply Function Manually -->
+
+
+<h3 id="Steps-to-implement-the-apply-function"><a href="#Steps-to-implement-the-apply-function" class="headerlink" title="Steps to implement the apply function:"></a>Steps to implement the apply function:</h3><ol>
+<li><p>Determine if the calling object is a function. Even though it’s defined on the function’s prototype, there may be instances where it is invoked using methods like call.</p>
+</li>
+<li><p>Check if the incoming context object exists; if not, set it to window.</p>
+</li>
+<li><p>Assign the function as a property of the context object.</p>
+</li>
+<li><p>Determine if the parameter values have been passed in.</p>
+</li>
+<li><p>Invoke the method using the context object and save the returned result.</p>
+</li>
+<li><p>Remove the property that was just added.</p>
+</li>
+<li><p>Return the result</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// apply </span><br><span class="line">Function.prototype.myApply = function(context) &#123;</span><br><span class="line">  </span><br><span class="line">  if (typeof this !== &quot;function&quot;) &#123;</span><br><span class="line">    throw new TypeError(&quot;Error&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  let result = null;</span><br><span class="line">  // check context  or set to window</span><br><span class="line">  context = context || window;</span><br><span class="line">  // set funcion</span><br><span class="line">  context.fn = this;</span><br><span class="line">  // call the method</span><br><span class="line">  if (arguments[1]) &#123;</span><br><span class="line">    result = context.fn(...arguments[1]);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    result = context.fn();</span><br><span class="line">  &#125;</span><br><span class="line">  // del property</span><br><span class="line">  delete context.fn;</span><br><span class="line">  return result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="Implementing-the-bind-Function-Manually"><a href="#Implementing-the-bind-Function-Manually" class="headerlink" title="Implementing the bind Function Manually"></a>Implementing the bind Function Manually</h3><h4 id="Steps-to-implement-the-bind-function"><a href="#Steps-to-implement-the-bind-function" class="headerlink" title="Steps to implement the bind function:"></a>Steps to implement the bind function:</h4><ol>
+<li><p>Determine if the calling object is a function. Even though it’s defined on the function’s prototype, there may be instances where it is invoked using methods like call.</p>
+</li>
+<li><p>Save a reference to the current function and retrieve the rest of the passed-in parameter values.</p>
+</li>
+<li><p>Return a new function.</p>
+</li>
+<li><p>Internally, the function uses apply to bind the function call. It’s important to account for the function being used as a constructor. In such cases, the current function’s ‘this’ needs to be passed to apply, while in all other cases, the specified context object is passed.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// bind </span><br><span class="line">Function.prototype.myBind = function(context) &#123;</span><br><span class="line">  </span><br><span class="line">  if (typeof this !== &quot;function&quot;) &#123;</span><br><span class="line">    throw new TypeError(&quot;Error&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">  // get parm</span><br><span class="line">  var args = [...arguments].slice(1),</span><br><span class="line">      fn = this;</span><br><span class="line">  return function Fn() &#123;</span><br><span class="line">    return fn.apply(</span><br><span class="line">      this instanceof Fn ? this : context,</span><br><span class="line">      args.concat(...arguments)</span><br><span class="line">    );</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/02/26/ImplementingTheApplyFunctionManually/" data-id="cm4ecou8a0004z1t0em2vevkv" data-title="Implementing the apply Function Manually" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/03/26/decode%20message/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          decode message
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/02/05/FlattenArray/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Flatten the array</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/11/17/commonUseOfClosure/">two common use of closure</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/16/protoType%20and%20%20protoType%20Chain/">protoType and protoType Chain</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/13/When%20to%20Use%20===%20and%20==/">When to Use === and ==</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/13/deepClone/">Implement deepClone manually</a>
+          </li>
+        
+          <li>
+            <a href="/2024/03/26/decode%20message/">decode message</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 huck@love<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

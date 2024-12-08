@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Flatten the array | Huck&#39;s dev blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="(1) Recursive implementationThe common idea behind recursion is straightforward, involving a circular recursion approach where each item is iterated over. If an item is still an array, the process">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flatten the array">
+<meta property="og:url" content="http://example.com/2024/02/05/FlattenArray/index.html">
+<meta property="og:site_name" content="Huck&#39;s dev blog">
+<meta property="og:description" content="(1) Recursive implementationThe common idea behind recursion is straightforward, involving a circular recursion approach where each item is iterated over. If an item is still an array, the process">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-05T01:40:00.000Z">
+<meta property="article:modified_time" content="2024-12-08T15:49:39.294Z">
+<meta property="article:author" content="huck@love">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Huck's dev blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Huck&#39;s dev blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-FlattenArray" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/05/FlattenArray/" class="article-date">
+  <time class="dt-published" datetime="2024-02-05T01:40:00.000Z" itemprop="datePublished">2024-02-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Flatten the array
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+         <!-- ### Flatten the array -->
+
+
+<h4 id="1-Recursive-implementation"><a href="#1-Recursive-implementation" class="headerlink" title="(1) Recursive implementation"></a>(1) Recursive implementation</h4><p>The common idea behind recursion is straightforward, involving a circular recursion approach where each item is iterated over. If an item is still an array, the process continues recursively to achieve the concatenation of each array item.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, [2, [3, 4, 5]]];</span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">  let result = [];</span><br><span class="line"></span><br><span class="line">  for(let i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">    if(Array.isArray(arr[i])) &#123;</span><br><span class="line">      result = result.concat(flatten(arr[i]));</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      result.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br><span class="line">flatten(arr);  //  [1, 2, 3, 4，5]</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-reduce-function-iteration"><a href="#2-reduce-function-iteration" class="headerlink" title="(2) reduce function iteration"></a>(2) reduce function iteration</h4><p>From the ordinary recursive function described above, it’s clear that each array item is processed individually. In fact, the reduce method can also be used for array concatenation, thus simplifying the code from the first method. The transformed code is as follows:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, [2, [3, 4]]];</span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">    return arr.reduce(function(prev, next)&#123;</span><br><span class="line">        return prev.concat(Array.isArray(next) ? flatten(next) : next)</span><br><span class="line">    &#125;, [])</span><br><span class="line">&#125;</span><br><span class="line">console.log(flatten(arr));//  [1, 2, 3, 4，5]</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-Extension-operator-implementation"><a href="#3-Extension-operator-implementation" class="headerlink" title="(3) Extension operator implementation"></a>(3) Extension operator implementation</h4><p>This method’s implementation involves the use of the spread operator and the some method, both used in conjunction to achieve array flattening:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, [2, [3, 4]]];</span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">    while (arr.some(item =&gt; Array.isArray(item))) &#123;</span><br><span class="line">        arr = [].concat(...arr);</span><br><span class="line">    &#125;</span><br><span class="line">    return arr;</span><br><span class="line">&#125;</span><br><span class="line">console.log(flatten(arr)); //  [1, 2, 3, 4，5]</span><br></pre></td></tr></table></figure>
+<h4 id="（4）split-and-toString"><a href="#（4）split-and-toString" class="headerlink" title="（4）split and toString"></a>（4）split and toString</h4><p>The split and toString methods are used to flatten the array. Since the array has a toString method by default, you can convert the array directly to a comma-separated string, and then use the split method to convert the string back to the array, as shown in the following code:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, [2, [3, 4]]];</span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">    return arr.toString().split(&#x27;,&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">console.log(flatten(arr)); //  [1, 2, 3, 4，5]</span><br></pre></td></tr></table></figure>
+
+
+<p>Using these two methods, a multidimensional array can be directly converted into a comma-separated string, which is then split back into an array.</p>
+<p>####(5) flat in ES6</p>
+<p>We can also directly call the flat method in ES6 to implement array flattening. Syntax for the flat method: arr.flat([depth])</p>
+<p>depth is the parameter of flat, depth is the expansion depth of the array can be passed (the default is not filled, the value is 1), that is, expand a layer of array. If the number of layers is uncertain, the parameter can be passed into Infinity, which means that no matter how many layers are expanded:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, [2, [3, 4]]];</span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">  return arr.flat(Infinity);</span><br><span class="line">&#125;</span><br><span class="line">console.log(flatten(arr)); //  [1, 2, 3, 4，5]</span><br></pre></td></tr></table></figure>
+
+
+<p>As you can see, a nested array of two layers achieves the desired effect by setting the parameter of the flat method to Infinity. In fact, it can also be set to 2, which can also achieve this effect. In the programming process, if the number of nested layers of the array is uncertain, it is best to use Infinity directly, which can achieve flatness.</p>
+<h4 id="6-RE-and-JSON-methods"><a href="#6-RE-and-JSON-methods" class="headerlink" title="(6) RE and JSON methods"></a>(6) RE and JSON methods</h4><p>The toString method is already used in the fourth method, which still uses the JSON.stringify method to convert it to a string, then filters out the array square brackets in the string through regular expressions, and finally converts it to an array using JSON.parse:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, [2, [3, [4, 5]]], 6];</span><br><span class="line">function flatten(arr) &#123;</span><br><span class="line">  let str = JSON.stringify(arr);</span><br><span class="line">  str = str.replace(/(\[|\])/g, &#x27;&#x27;);</span><br><span class="line">  str = &#x27;[&#x27; + str + &#x27;]&#x27;;</span><br><span class="line">  return JSON.parse(str); </span><br><span class="line">&#125;</span><br><span class="line">console.log(flatten(arr)); //  [1, 2, 3, 4，5]</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/02/05/FlattenArray/" data-id="cm4ecou860003z1t04ebccfqg" data-title="Flatten the array" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/02/26/ImplementingTheApplyFunctionManually/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Implementing the apply Function Manually
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/02/05/deepCopy/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Implement deep copy</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/11/17/commonUseOfClosure/">two common use of closure</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/16/protoType%20and%20%20protoType%20Chain/">protoType and protoType Chain</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/13/When%20to%20Use%20===%20and%20==/">When to Use === and ==</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/13/deepClone/">Implement deepClone manually</a>
+          </li>
+        
+          <li>
+            <a href="/2024/03/26/decode%20message/">decode message</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 huck@love<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

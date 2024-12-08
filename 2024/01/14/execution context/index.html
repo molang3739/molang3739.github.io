@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Understanding the execution context | Huck&#39;s dev blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Execution context type  （1）global execution context Anything that is not inside a function is a global execution context. It first creates a global window object and sets the value of this object to">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Understanding the execution context">
+<meta property="og:url" content="http://example.com/2024/01/14/execution%20context/index.html">
+<meta property="og:site_name" content="Huck&#39;s dev blog">
+<meta property="og:description" content="Execution context type  （1）global execution context Anything that is not inside a function is a global execution context. It first creates a global window object and sets the value of this object to">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-01-14T00:36:00.000Z">
+<meta property="article:modified_time" content="2024-12-08T15:56:50.955Z">
+<meta property="article:author" content="huck@love">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Huck's dev blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Huck&#39;s dev blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-execution context" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/01/14/execution%20context/" class="article-date">
+  <time class="dt-published" datetime="2024-01-14T00:36:00.000Z" itemprop="datePublished">2024-01-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Understanding the execution context
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- ## Understanding the execution context  -->
+<ol>
+<li>Execution context type</li>
+</ol>
+<p>（1）global execution context</p>
+<p>Anything that is not inside a function is a global execution context. It first creates a global window object and sets the value of this object to be equal to this global object. A program has only one global execution context. </p>
+<p>（2）function execution context</p>
+<p>When a function is called, a new execution context is created for the function. The context of the function can be as many as possible. </p>
+<p>（3）* * eval * * function execution context  </p>
+<p>the code executed in the eval function has its own execution context. However, the eval function is not often used and is not introduced. </p>
+<h2 id="2-Execute-the-context-stack"><a href="#2-Execute-the-context-stack" class="headerlink" title="2. Execute the context stack"></a>2. Execute the context stack</h2><p>● the JavaScript engine uses the execution context stack to manage the execution context.</p>
+<p>● when the JavaScript executes the code, it first encounters the global code, creates a global execution context and presses it into the execution stack. Whenever a function call is encountered, it creates a new execution context for the function and presses it into the top of the stack. The engine executes the function at the top of the execution context stack. After the function execution is completed, the execution context pops up from the stack and continues to execute the next context. After all the code is executed, the global execution context pops up from the stack.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">let a = &#x27;Hello World!&#x27;;</span><br><span class="line">function first() &#123;</span><br><span class="line">  console.log(&#x27;Inside first function&#x27;);</span><br><span class="line">  second();</span><br><span class="line">  console.log(&#x27;Again inside first function&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">function second() &#123;</span><br><span class="line">  console.log(&#x27;Inside second function&#x27;);</span><br><span class="line">&#125;</span><br><span class="line">first();</span><br><span class="line">//order of excution</span><br><span class="line">// second()  first()</span><br></pre></td></tr></table></figure>
+<h2 id="3-Create-an-execution-context"><a href="#3-Create-an-execution-context" class="headerlink" title="3. Create an execution context"></a>3. Create an execution context</h2><p>there are two phases to create an execution context: creation phase and execution phase </p>
+<h3 id="1）creation-phase"><a href="#1）creation-phase" class="headerlink" title="1）creation phase"></a>1）creation phase</h3><p> （1）this binding<br>●<br>in the context of global execution, this point to a global object (window object) </p>
+<p>●<br>in the context of function execution, this point depends on how the function is called. If it is called by a reference object, this is set to that object, otherwise the value of this is set to global object or undefined </p>
+<p>###（2）create lexical environment components </p>
+<p>●<br>lexical environment is a kind identifier – Variable mapping the identifier refers to the variable&#x2F;function name, and the variable is a reference to the actual object or raw data.</p>
+<p>●<br>the lexical environment has two internal components: bold Style : environment recorder: used to store the actual location of variable function declarations references to external environments : you can access the parent scope. </p>
+<p>###（3）Create a variable environment component</p>
+<p>●<br>the variable environment is also a lexical environment. Its environment recorder holds the binding relationship created in the execution context of the variable declaration statement. </p>
+<h3 id="2）execution-phase"><a href="#2）execution-phase" class="headerlink" title="2）execution phase"></a>2）execution phase</h3><p>At this stage, variables are allocated and the code is executed. </p>
+<p>In short, the execution context refers:</p>
+<p>Before executing a little JS code, you need to parse the code. When parsing, a global execution context is created. First, the variables and function declarations to be executed in the code are taken out. The variables are assigned to undefined first, and the functions are declared to be available. After this step is completed, the formal execution procedure is started. </p>
+<p>Before a function is executed, a function execution context is also created, which is similar to the global execution context. However, this, arguments, and function parameters are added to the function execution context. </p>
+<p>●<br>global Context: variable definition, function declaration </p>
+<p>●<br>function context: variable definition, function declaration, this , arguments</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/01/14/execution%20context/" data-id="cm4ecou8z000gz1t052by9q0h" data-title="Understanding the execution context" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/01/14/Ajax%20axios%20fetch/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Differences among Ajax, axios, and fetch
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/01/14/array-like%20objects/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">The understanding of array-like objects</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/11/">November 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">February 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">January 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/11/17/commonUseOfClosure/">two common use of closure</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/16/protoType%20and%20%20protoType%20Chain/">protoType and protoType Chain</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/13/When%20to%20Use%20===%20and%20==/">When to Use === and ==</a>
+          </li>
+        
+          <li>
+            <a href="/2024/11/13/deepClone/">Implement deepClone manually</a>
+          </li>
+        
+          <li>
+            <a href="/2024/03/26/decode%20message/">decode message</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 huck@love<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
