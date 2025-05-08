@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>npm install config | Huck's dev blog</title><meta name="author" content="huck@love"><meta name="copyright" content="huck@love"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="After installing npm, I wanted to install http-server, but I got an error saying:   the reason is that node_module directroy is in a protected directory. Apple Support: System Integrity Protection The">
+<meta property="og:type" content="article">
+<meta property="og:title" content="npm install config">
+<meta property="og:url" content="https://molang3739.github.io/2025/02/20/npm-install-config/index.html">
+<meta property="og:site_name" content="Huck&#39;s dev blog">
+<meta property="og:description" content="After installing npm, I wanted to install http-server, but I got an error saying:   the reason is that node_module directroy is in a protected directory. Apple Support: System Integrity Protection The">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://molang3739.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-02-20T13:33:27.000Z">
+<meta property="article:modified_time" content="2025-05-08T14:51:45.415Z">
+<meta property="article:author" content="huck@love">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://molang3739.github.io/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://molang3739.github.io/2025/02/20/npm-install-config/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-HF523202T8"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-HF523202T8')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-HF523202T8', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'npm install config',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/butterfly-icon.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://molang3739.github.io/images/car-race-438467_1920_tiny.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Huck's dev blog</span></a><a class="nav-page-title" href="/"><span class="site-name">npm install config</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">npm install config</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-02-20T13:33:27.000Z" title="Created 2025-02-20 21:33:27">2025-02-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-05-08T14:51:45.415Z" title="Updated 2025-05-08 22:51:45">2025-05-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>After installing npm, I wanted to install http-server, but I got an error saying:</p>
+<!-- ![](/Users/huck/Library/Application%20Support/marktext/images/2025-02-20-21-38-25-image.png) -->
+
+<p><img src="/./images/npm-ic/image.png" alt="error-img"><br>the reason is that node_module directroy is in a protected directory.</p>
+<p><a target="_blank" rel="noopener" href="https://support.apple.com/zh-cn/guide/security/secb7ea06b49/web">Apple Support: System Integrity Protection</a></p>
+<p>There are three ways to solve this problem:</p>
+<ol>
+<li>Use <code>sudo</code> to install (not recommended)</li>
+<li>Turn off SIP (not recommended)</li>
+<li>Manually change npm’s default directories (suggested)</li>
+</ol>
+<p>Using <code>sudo</code> to install will override system files. If a package contains malicious code, using <code>sudo</code> grants the code full system control, leading to severe security vulnerabilities.</p>
+<p>SIP (System Integrity Protection) was introduced in macOS 10.13, which protects the following directories from modification:</p>
+<ul>
+<li>&#x2F;System</li>
+<li>&#x2F;usr</li>
+<li>&#x2F;bin</li>
+<li>&#x2F;sbin</li>
+<li>&#x2F;var</li>
+</ul>
+<p>There’s a solution to turn off SIP (<a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/security/disabling-and-enabling-system-integrity-protection">Disabling and Enabling System Integrity Protection | Apple Developer Documentation</a>), but this is not recommended.</p>
+<p>The best approach is to set a custom default directory for npm:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/npm-global</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix ~/npm-global</span><br></pre></td></tr></table></figure>
+
+<p>add the following scripts in your bash_profile or ~&#x2F;.zshrc if you use zsh:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> N_PREFIX=<span class="string">&quot;<span class="variable">$HOME</span>/npm-global&quot;</span> <span class="comment">#depends on your directory</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$N_PREFIX</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+
+<p>to make it work,execute:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bash_profile <span class="comment">#bash user</span></span><br></pre></td></tr></table></figure>
+
+<p>or</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc  <span class="comment">#zsh user</span></span><br></pre></td></tr></table></figure>
+
+<p>That’s it.</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://molang3739.github.io">huck@love</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://molang3739.github.io/2025/02/20/npm-install-config/">https://molang3739.github.io/2025/02/20/npm-install-config/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/05/02/enable-CORS-support-in-Chrome-on-Mac/" title="enable CORS support in Chrome on Mac"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">enable CORS support in Chrome on Mac</div></div><div class="info-2"><div class="info-item-1">BackgroundCORS (Cross-Origin Resource Sharing) is a security feature implemented in modern web browsers. It restricts web pages from making requests to a domain different from the one that served the original page. This mechanism protects users from malicious scripts attempting to access sensitive information across sites. However, during local development or API testing, CORS can sometimes block legitimate requests. In such cases, it may be helpful to temporarily disable CORS restrictions...</div></div></div></a><a class="pagination-related" href="/2025/01/06/Tapbit%E5%90%88%E7%BA%A6%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" title="Tapbit 合约页面性能报告"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">Tapbit 合约页面性能报告</div></div><div class="info-2"><div class="info-item-1">报告概述1 背景检查 Tapbit 合约页面的性能，寻找是否有可优化的地方浏览器：Mac 上的 Chrome，版本 131.0.6778.205 (Official Build) (arm64)设备：MacBook Air M3 2 当前性能指标使用工具（WebPageTest 和隐身模式下的 LightHouse）获取 Binance、OKX 和 Tapbit 的性能指标       Binance OKX Tapbit    性能评分 91 92 67   SSR 是 是 否    页面地址：https://www.tapbit.com/contract/futures/BTC-SWAP在线结果：https://www.webpagetest.org/result/250103_AiDcE7_FE&#x2F;            为什么 SSR（服务器端渲染）的性能评分比 CSR（客户端渲染）更高？答案将在博客结尾解释。 在接下来的部分中，我们将使用本地 LightHouse 数据分析 Tapbit。 首次内容绘制 (FCP) ：（页面上第一个文本或图像被绘制）2.3 秒...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">huck@love</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/molang3739"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/02/enable-CORS-support-in-Chrome-on-Mac/" title="enable CORS support in Chrome on Mac">enable CORS support in Chrome on Mac</a><time datetime="2025-05-02T07:54:00.000Z" title="Created 2025-05-02 15:54:00">2025-05-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/02/20/npm-install-config/" title="npm install config">npm install config</a><time datetime="2025-02-20T13:33:27.000Z" title="Created 2025-02-20 21:33:27">2025-02-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/06/Tapbit%E5%90%88%E7%BA%A6%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" title="Tapbit 合约页面性能报告">Tapbit 合约页面性能报告</a><time datetime="2025-01-05T18:27:00.000Z" title="Created 2025-01-06 02:27:00">2025-01-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/03/Performance-Report-for-Tapbit-BTC-Contract-Page/" title="Performance Report for Tapbit BTC Contract Page">Performance Report for Tapbit BTC Contract Page</a><time datetime="2025-01-03T04:27:00.000Z" title="Created 2025-01-03 12:27:00">2025-01-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/02/How-large-should-a-JS-file-be/" title="How large should a JS file be">How large should a JS file be</a><time datetime="2025-01-01T17:30:00.000Z" title="Created 2025-01-02 01:30:00">2025-01-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By huck@love</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

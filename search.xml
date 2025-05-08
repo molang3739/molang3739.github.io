@@ -4,6 +4,38 @@
   
     
     <entry>
+      <title>enable CORS support in Chrome on Mac</title>
+      <link href="/2025/05/02/enable-CORS-support-in-Chrome-on-Mac/"/>
+      <url>/2025/05/02/enable-CORS-support-in-Chrome-on-Mac/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h2><p>CORS (Cross-Origin Resource Sharing) is a security feature implemented in modern web browsers. It restricts web pages from making requests to a domain different from the one that served the original page. This mechanism protects users from malicious scripts attempting to access sensitive information across sites.</p><p>However, during local development or API testing, CORS can sometimes block legitimate requests. In such cases, it may be helpful to temporarily disable CORS restrictions for development purposes.</p><p>⚠️ Warning: Disabling web security significantly reduces browser protections. Use this method strictly for development. Do not browse the internet with this instance.</p><h2 id="Solution-Launch-Chrome-with-CORS-Disabled-on-macOS"><a href="#Solution-Launch-Chrome-with-CORS-Disabled-on-macOS" class="headerlink" title="Solution: Launch Chrome with CORS Disabled on macOS"></a>Solution: Launch Chrome with CORS Disabled on macOS</h2><p>To start a new Chrome instance with web security disabled, run the following command in your terminal:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">open -n /Applications/Google\ Chrome.app/ --args --disable-web-security --user-data-dir=<span class="variable">$HOME</span>/MyChromeDevUserData/</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>Explanation:<br>open -n: Opens a new Chrome instance, even if another one is running.</p><p>–disable-web-security: Disables CORS and other security features.</p><p>–user-data-dir: Specifies a separate user profile directory to isolate this instance from your main Chrome profile.</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> CORS, Chrome, macOS, Web Development </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>npm install config</title>
+      <link href="/2025/02/20/npm-install-config/"/>
+      <url>/2025/02/20/npm-install-config/</url>
+      
+        <content type="html"><![CDATA[<p>After installing npm, I wanted to install http-server, but I got an error saying:</p><!-- ![](/Users/huck/Library/Application%20Support/marktext/images/2025-02-20-21-38-25-image.png) --><p><img src="/./images/npm-ic/image.png" alt="error-img"><br>the reason is that node_module directroy is in a protected directory.</p><p><a href="https://support.apple.com/zh-cn/guide/security/secb7ea06b49/web">Apple Support: System Integrity Protection</a></p><p>There are three ways to solve this problem:</p><ol><li>Use <code>sudo</code> to install (not recommended)</li><li>Turn off SIP (not recommended)</li><li>Manually change npm’s default directories (suggested)</li></ol><p>Using <code>sudo</code> to install will override system files. If a package contains malicious code, using <code>sudo</code> grants the code full system control, leading to severe security vulnerabilities.</p><p>SIP (System Integrity Protection) was introduced in macOS 10.13, which protects the following directories from modification:</p><ul><li>&#x2F;System</li><li>&#x2F;usr</li><li>&#x2F;bin</li><li>&#x2F;sbin</li><li>&#x2F;var</li></ul><p>There’s a solution to turn off SIP (<a href="https://developer.apple.com/documentation/security/disabling-and-enabling-system-integrity-protection">Disabling and Enabling System Integrity Protection | Apple Developer Documentation</a>), but this is not recommended.</p><p>The best approach is to set a custom default directory for npm:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/npm-global</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix ~/npm-global</span><br></pre></td></tr></table></figure><p>add the following scripts in your bash_profile or ~&#x2F;.zshrc if you use zsh:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> N_PREFIX=<span class="string">&quot;<span class="variable">$HOME</span>/npm-global&quot;</span> <span class="comment">#depends on your directory</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$N_PREFIX</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure><p>to make it work,execute:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bash_profile <span class="comment">#bash user</span></span><br></pre></td></tr></table></figure><p>or</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc  <span class="comment">#zsh user</span></span><br></pre></td></tr></table></figure><p>That’s it.</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Tapbit 合约页面性能报告</title>
       <link href="/2025/01/06/Tapbit%E5%90%88%E7%BA%A6%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/"/>
       <url>/2025/01/06/Tapbit%E5%90%88%E7%BA%A6%E9%A1%B5%E9%9D%A2%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/</url>
